@@ -1,17 +1,22 @@
+
+package clinica.entidadesdenegocio;
+
 import java.time.LocalDate;
 
+
 public class Usuario {
-    private int id;
+  
+  private int id;
     private int idRol;
     private String nombre;
-      private String apellido;
-        private String login;
-          private String password;
-            private  byte estatus;
-            private LocalDate fechaRegistro;
-            private int top_aux;
-              private String ConfirmarPassword;
-              private Rol rol;
+    private String apellido;
+    private String login;
+    private String password;
+    private byte estatus;
+    private LocalDate fechaRegistro;
+    private int top_aux;
+    private String confirmPassword_aux;
+    private Rol rol;
 
     public Usuario() {
     }
@@ -99,12 +104,12 @@ public class Usuario {
         this.top_aux = top_aux;
     }
 
-    public String getConfirmarPassword() {
-        return ConfirmarPassword;
+    public String getConfirmPassword_aux() {
+        return confirmPassword_aux;
     }
 
-    public void setConfirmarPassword(String ConfirmarPassword) {
-        this.ConfirmarPassword = ConfirmarPassword;
+    public void setConfirmPassword_aux(String confirmPassword_aux) {
+        this.confirmPassword_aux = confirmPassword_aux;
     }
 
     public Rol getRol() {
@@ -114,7 +119,7 @@ public class Usuario {
     public void setRol(Rol rol) {
         this.rol = rol;
     }
-              
-              
-    
+
+   
+   
 }

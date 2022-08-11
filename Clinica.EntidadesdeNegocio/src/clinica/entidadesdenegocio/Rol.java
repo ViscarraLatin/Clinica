@@ -1,10 +1,13 @@
+
+package clinica.entidadesdenegocio;
+
 import java.util.ArrayList;
 
 public class Rol {
-    private int id;
+    private int id ;
     private String nombre;
     private int top_aux;
-    private ArrayList <Usuario> usuarios;
+    private ArrayList<Usuario>usuarios;
 
     public Rol() {
     }
@@ -45,6 +48,5 @@ public class Rol {
     public void setUsuarios(ArrayList<Usuario> usuarios) {
         this.usuarios = usuarios;
     }
-  
     
-}   
+}
