@@ -64,15 +64,15 @@ public class ComunDB {
         }
         return result;
     }
-               class utilQuery{
+               class UtilQuery{
     private String SQL;
     private PreparedStatement statement;
     private int numWhere;
 
-    public utilQuery() {
+    public UtilQuery() {
     }
 
-    public utilQuery(String SQL, PreparedStatement statement, int numWhere) {
+    public UtilQuery(String SQL, PreparedStatement statement, int numWhere) {
         this.SQL = SQL;
         this.statement = statement;
         this.numWhere = numWhere;
@@ -102,7 +102,7 @@ public class ComunDB {
         this.numWhere = numWhere;
     }
     
-    public void AgregarNumWhere(String pSql){
+    public void AgregarWhereAnd(String pSql){
         if(this.SQL != null){
             if(this.numWhere == 0)
                 this.SQL += " WHERE ";
