@@ -1,4 +1,3 @@
-
 package clinica.entidadesdenegocio;
 
 
@@ -117,7 +116,7 @@ public class Expediente {
     public void setRegistroPacientes(RegistroPaciente registroPacientes) {
         this.registroPacientes = registroPacientes;
     }
-     
-     
+
+    
 
 }
