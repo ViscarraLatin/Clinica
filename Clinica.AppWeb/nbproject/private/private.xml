@@ -12,5 +12,13 @@
             <file>file:/C:/Users/KATHYA%20VISCARRA/OneDrive/Escritorio/CLINICA22/Clinica.AppWeb/web/index.html</file>
             <file>file:/C:/Users/KATHYA%20VISCARRA/OneDrive/Escritorio/CLINICA22/Clinica.AppWeb/src/java/clinica/appweb/utils/Utilidad.java</file>
         </group>
+        <group name="Proyecto">
+            <file>file:/C:/Users/Evelyn%20Cortez/Desktop/Clinica/Clinica.AppWeb/src/java/clinica/appweb/controllers/RolServlet.java</file>
+            <file>file:/C:/Users/Evelyn%20Cortez/Desktop/Clinica/Clinica.AppWeb/src/java/clinica/appweb/utils/IAuthorize.java</file>
+            <file>file:/C:/Users/Evelyn%20Cortez/Desktop/Clinica/Clinica.AppWeb/src/java/clinica/appweb/controllers/RegistroPacienteServlet.java</file>
+            <file>file:/C:/Users/Evelyn%20Cortez/Desktop/Clinica/Clinica.AppWeb/src/java/clinica/appweb/utils/SessionUser.java</file>
+            <file>file:/C:/Users/Evelyn%20Cortez/Desktop/Clinica/Clinica.AppWeb/src/java/clinica/appweb/utils/Utilidad.java</file>
+            <file>file:/C:/Users/Evelyn%20Cortez/Desktop/Clinica/Clinica.AppWeb/src/java/clinica/appweb/controllers/UsuarioServlet.java</file>
+        </group>
     </open-files>
 </project-private>
