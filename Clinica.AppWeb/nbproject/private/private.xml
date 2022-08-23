@@ -20,5 +20,15 @@
             <file>file:/C:/Users/Evelyn%20Cortez/Desktop/Clinica/Clinica.AppWeb/src/java/clinica/appweb/utils/Utilidad.java</file>
             <file>file:/C:/Users/Evelyn%20Cortez/Desktop/Clinica/Clinica.AppWeb/src/java/clinica/appweb/controllers/UsuarioServlet.java</file>
         </group>
+        <group name="Clinica2022">
+            <file>file:/C:/Users/royal/OneDrive/Desktop/clinica2022/Clinica/Clinica.AppWeb/web/Views/Rol/create.jsp</file>
+            <file>file:/C:/Users/royal/OneDrive/Desktop/clinica2022/Clinica/Clinica.AppWeb/web/Views/Usuario/create.jsp</file>
+            <file>file:/C:/Users/royal/OneDrive/Desktop/clinica2022/Clinica/Clinica.AppWeb/web/Views/Usuario/delete.jsp</file>
+            <file>file:/C:/Users/royal/OneDrive/Desktop/clinica2022/Clinica/Clinica.AppWeb/src/java/clinica/appweb/controllers/RegistroPacienteServlet.java</file>
+            <file>file:/C:/Users/royal/OneDrive/Desktop/clinica2022/Clinica/Clinica.AppWeb/src/java/clinica/appweb/controllers/ExpedienteServlet.java</file>
+            <file>file:/C:/Users/royal/OneDrive/Desktop/clinica2022/Clinica/Clinica.AppWeb/src/java/clinica/appweb/controllers/RolServlet.java</file>
+            <file>file:/C:/Users/royal/OneDrive/Desktop/clinica2022/Clinica/Clinica.AppWeb/src/java/clinica/appweb/controllers/UsuarioServlet.java</file>
+            <file>file:/C:/Users/royal/OneDrive/Desktop/clinica2022/Clinica/Clinica.AppWeb/src/java/clinica/appweb/controllers/HomeServlet.java</file>
+        </group>
     </open-files>
 </project-private>
