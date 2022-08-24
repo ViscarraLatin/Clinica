@@ -86,6 +86,7 @@ public class RegistroPacienteServlet extends HttpServlet {
             Utilidad.enviarError(ex.getMessage(), request, response);
         }
     }
+         
         
         
          private void requestObtenerPorId(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
