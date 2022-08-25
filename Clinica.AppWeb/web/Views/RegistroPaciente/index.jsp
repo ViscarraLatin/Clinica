@@ -11,7 +11,7 @@
     int numPage = 1;
     int numReg = 10;
     int countReg = 0;
-    if (registroPacientes == null) {
+    if (registroPacientes == null) { 
         registroPacientes = new ArrayList();
         
 } else if (registroPacientes.size() > numReg) {
@@ -68,7 +68,7 @@
                                              <th>EstadoCivil</th> 
                                                 <th>Edad</th>
                                      <th>Direccion</th> 
-                                        <th></th> 
+                                   
                                            <th>Peso</th> 
    <th>Estatura</th>                                    
       <th>Acciones</th>

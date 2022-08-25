@@ -1,17 +1,29 @@
-<%-- 
-    Document   : index.jsp
-    Created on : 22 ago. 2022, 07:54:32
-    Author     : KATHYA VISCARRA
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="clinica.appweb.utils.*"%>
+<%@page import="jakarta.servlet.http.HttpServletRequest"%>
+
+<% if (SessionUser.isAuth(request) == false) {
+         response.sendRedirect("Usuario?accion=login");
+    }
+%>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+    <head>        
+        <jsp:include page="/Views/Shared/title.jsp" />
+        <title>Home</title>
+
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <jsp:include page="/Views/Shared/headerBody.jsp" />  
+        <main class="container"> 
+            <div class="row">
+                <div class="col l12 s12">
+                    <h1>Bienvenidos</h1> 
+                    <span> SISTEMA CLINICO </span> 
+                </div>
+            </div>            
+        </main>
+        <jsp:include page="/Views/Shared/footerBody.jsp" />      
     </body>
 </html>
+
