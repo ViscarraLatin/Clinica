@@ -10,5 +10,8 @@
         </group>
         <group name="clinica"/>
         <group name="CLINICA22"/>
+        <group name="Clinica2022">
+            <file>file:/C:/Users/royal/OneDrive/Desktop/clinica2022/Clinica/Clinica.AccesoADatos/src/clinica/accesoadatos/RegistroPacienteDAL.java</file>
+        </group>
     </open-files>
 </project-private>
