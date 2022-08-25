@@ -2,11 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group name="CLINICA22">
-            <file>file:/C:/Users/KATHYA%20VISCARRA/OneDrive/Escritorio/CLINICA22/Clinica.AppWeb/src/java/clinica/appweb/controllers/Home.java</file>
-            <file>file:/C:/Users/KATHYA%20VISCARRA/OneDrive/Escritorio/CLINICA22/Clinica.AppWeb/src/java/clinica/appweb/utils/Utilidad.java</file>
-            <file>file:/C:/Users/KATHYA%20VISCARRA/OneDrive/Escritorio/CLINICA22/Clinica.AppWeb/web/index.html</file>
-        </group>
         <group name="Practica">
             <file>file:/C:/Users/KATHYA%20VISCARRA/OneDrive/Escritorio/CLINICA22/Clinica.AppWeb/src/java/clinica/appweb/controllers/Home.java</file>
             <file>file:/C:/Users/KATHYA%20VISCARRA/OneDrive/Escritorio/CLINICA22/Clinica.AppWeb/web/index.html</file>
@@ -29,6 +24,18 @@
             <file>file:/C:/Users/royal/OneDrive/Desktop/clinica2022/Clinica/Clinica.AppWeb/src/java/clinica/appweb/controllers/RolServlet.java</file>
             <file>file:/C:/Users/royal/OneDrive/Desktop/clinica2022/Clinica/Clinica.AppWeb/src/java/clinica/appweb/controllers/UsuarioServlet.java</file>
             <file>file:/C:/Users/royal/OneDrive/Desktop/clinica2022/Clinica/Clinica.AppWeb/src/java/clinica/appweb/controllers/HomeServlet.java</file>
+        </group>
+        <group name="CLINICA22">
+            <file>file:/C:/Users/KATHYA%20VISCARRA/OneDrive/Escritorio/CLINICA22/Clinica.AppWeb/web/Views/RegistroPaciente/delete.jsp</file>
+            <file>file:/C:/Users/KATHYA%20VISCARRA/OneDrive/Escritorio/CLINICA22/Clinica.AppWeb/web/Views/RegistroPaciente/create.jsp</file>
+            <file>file:/C:/Users/KATHYA%20VISCARRA/OneDrive/Escritorio/CLINICA22/Clinica.AppWeb/web/Views/Rol/create.jsp</file>
+            <file>file:/C:/Users/KATHYA%20VISCARRA/OneDrive/Escritorio/CLINICA22/Clinica.AppWeb/web/Views/RegistroPaciente/edit.jsp</file>
+            <file>file:/C:/Users/KATHYA%20VISCARRA/OneDrive/Escritorio/CLINICA22/Clinica.AppWeb/web/Views/Rol/index.jsp</file>
+            <file>file:/C:/Users/KATHYA%20VISCARRA/OneDrive/Escritorio/CLINICA22/Clinica.AppWeb/web/Views/RegistroPaciente/details.jsp</file>
+            <file>file:/C:/Users/KATHYA%20VISCARRA/OneDrive/Escritorio/CLINICA22/Clinica.AppWeb/web/Views/Rol/edit.jsp</file>
+            <file>file:/C:/Users/KATHYA%20VISCARRA/OneDrive/Escritorio/CLINICA22/Clinica.AppWeb/web/Views/Rol/details.jsp</file>
+            <file>file:/C:/Users/KATHYA%20VISCARRA/OneDrive/Escritorio/CLINICA22/Clinica.AppWeb/web/Views/Rol/delete.jsp</file>
+            <file>file:/C:/Users/KATHYA%20VISCARRA/OneDrive/Escritorio/CLINICA22/Clinica.AppWeb/web/Views/RegistroPaciente/index.jsp</file>
         </group>
     </open-files>
 </project-private>
