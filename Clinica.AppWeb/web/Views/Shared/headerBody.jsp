@@ -10,7 +10,7 @@
 
 <nav>
     <div class="nav-wrapper blue">
-        <a href="Home" class="brand-logo">SysSeguridad</a>
+        <a href="Home" class="brand-logo">Clinica</a>
         <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>       
         <ul class="right hide-on-med-and-down">  
             <% if (SessionUser.isAuth(request)) {  %>
@@ -19,8 +19,8 @@
             <li><a href="Empresa">Expediente</a></li>
             <li><a href="Usuario">Usuarios</a></li>
             <li><a href="Rol">Roles</a></li>
-            <li><a href="Usuario?accion=cambiarpass">Cambiar password</a></li>
-            <li><a href="Usuario?accion=login">Cerrar sesión</a></li>
+            <li><a href="Usuario?accion=cambiarpass">Cambiar Password</a></li>
+            <li><a href="Usuario?accion=login">Cerrar Sesión</a></li>
             <%}%>
         </ul>
     </div>
@@ -33,7 +33,7 @@
      <li><a href="Empresa">Expediente</a></li>
      <li><a href="Usuario">Usuarios</a></li>
      <li><a href="Rol">Roles</a></li>
-     <li><a href="Usuario?accion=cambiarpass">Cambiar password</a></li>
-     <li><a href="Usuario?accion=login">Cerrar sesión</a></li>
+     <li><a href="Usuario?accion=cambiarpass">Cambiar Password</a></li>
+     <li><a href="Usuario?accion=login">Cerrar Sesión</a></li>
      <%}%>
 </ul>
