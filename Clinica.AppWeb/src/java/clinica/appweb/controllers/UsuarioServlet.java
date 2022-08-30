@@ -16,7 +16,7 @@ import clinica.entidadesdenegocio.Usuario;
 
 @WebServlet(name = "UsuarioServlet", urlPatterns = {"/Usuario"})
 public class UsuarioServlet extends HttpServlet {
-    // <editor-fold defaultstate="collapsed" desc="Métodos para procesar las solicitudes get o post del Servlet">
+    // <editor-fold defaultstate="collapsed" desc="MÃ©todos para procesar las solicitudes get o post del Servlet">
 
     private Usuario obtenerUsuario(HttpServletRequest request) {
         String accion = Utilidad.getParameter(request, "accion", "index");
@@ -208,7 +208,7 @@ public class UsuarioServlet extends HttpServlet {
     }
     // </editor-fold>
 
-    // <editor-fold defaultstate="collapsed" desc="Métodos para procesar las peticiones Get y Post">
+    // <editor-fold defaultstate="collapsed" desc="MÃ©todos para procesar las peticiones Get y Post">
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

@@ -16,19 +16,29 @@ public class ComunDB {
       static String connectionUrlSqlserver = "jdbc:sqlserver://Clinica22.mssql.somee.com;"
               +"database=Clinica22;"
                + "user=JavaKathya;"
-              +"password=#ADOLFO1529;"
+              +"password=#Modulo14;"
               + "loginTimeout=30;encrypt=false;trustServerCertificate=false";
       
-              public static Connection obtenerConexion() throws SQLException{
-                  if(TIPODB==1){ 
-              DriverManager.registerDriver(new com.microsoft.sqlserver.jdbc.SQLServerDriver());
+      static String connectionUrlMariaDB = "jdbc:mariadb://localhost:3306/"
+            + "Clinica22?"
+            + "user=root&password=ESFE2022";
+      
+
+        public static Connection obtenerConexion() throws SQLException {
+        if(TIPODB == 1){
+            DriverManager.registerDriver(new com.microsoft.sqlserver.jdbc.SQLServerDriver());
             Connection connection = DriverManager.getConnection(connectionUrlSqlserver);
             return connection;
         }
-                  return null;
-              
-              }          
-                  
+        else if(TIPODB == 2){
+            DriverManager.registerDriver(new org.mariadb.jdbc.Driver());
+            Connection connection = DriverManager.getConnection(connectionUrlMariaDB);
+            return connection;
+        }
+        return null;
+    }
+    
+
                
  
                   

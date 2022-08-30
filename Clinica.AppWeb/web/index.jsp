@@ -2,6 +2,7 @@
 <%@page import="clinica.appweb.utils.*"%>
 <%@page import="jakarta.servlet.http.HttpServletRequest"%>
 
+
 <% if (SessionUser.isAuth(request) == false) {
          response.sendRedirect("Usuario?accion=login");
     }
@@ -19,7 +20,7 @@
             <div class="row">
                 <div class="col l12 s12">
                     <h1>Bienvenidos</h1> 
-                    <span> SISTEMA CLINICO </span> 
+                  
                 </div>
             </div>            
         </main>

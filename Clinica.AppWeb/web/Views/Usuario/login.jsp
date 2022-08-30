@@ -28,7 +28,7 @@
                 <div class="row">
                     <div class="input-field col l5 s12">                                             
                         <i class="material-icons prefix">enhanced_encryption</i>
-                        <input  id="txtPassword" type="password" name="password" required class="validate" minlength="5" maxlength="32">  
+                         <input  id="txtPassword" type="password" name="password" required class="validate" minlength="5" maxlength="32">  
                         <label for="txtPassword">Password</label>
                     </div>                                       
                 </div>
