@@ -27,7 +27,7 @@
                     </div> 
                     <div class="input-field col l4 s12">
                         <input  id="txtDescripcion" type="text" name="descripcion" required class="validate" maxlength="25">
-                        <label for="txtDescripcion">Descripción</label>
+                        <label for="txtDescripcion">Descripcion</label>
                     </div> 
                     <div class="input-field col l4 s12">
                         <input  id="txtExamenesComp" type="text" name="examenesComp" required class="validate" maxlength="25">

@@ -12,19 +12,19 @@ public class RolDAL {
     }
     private static String obtenerSelect(Rol pRol){
         String sql;
-        sql="SELECT";
+        sql="SELECT ";
         if(pRol.getTop_aux() > 0 && ComunDB.TIPODB ==ComunDB.TipoDB.SQLSERVER){
           sql += "TOP" + pRol.getTop_aux() + "";
        }
-        sql += (obtenerCampos() + "FROM Rol r");
+        sql += (obtenerCampos() + " FROM Rol r ");
         return sql;
     }
     
     private static String agregarOrderBy(Rol pRol){
-        String sql = "ORDER BY r.Id DESC";
+        String sql = " ORDER BY r.Id DESC ";
         if(pRol.getTop_aux() > 0 && ComunDB.TIPODB == ComunDB.TipoDB.MYSQL
                 ){
-            sql += "LIMIT" + pRol.getTop_aux() + "";
+            sql += " LIMIT " + pRol.getTop_aux() + "";
         }
         return sql;
     }

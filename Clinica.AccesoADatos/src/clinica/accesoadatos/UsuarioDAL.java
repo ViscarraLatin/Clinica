@@ -25,7 +25,7 @@ public class UsuarioDAL {
     }
     // Metodo para obtener los campos a utilizar en la consulta SELECT de la tabla de Usuario
     static String obtenerCampos() {
-        return "u.Id, u.IdRol, u.Nombre, u.Apellido, u.Login,u.password, u.Estatus, u.FechaRegistro";
+        return "u.Id, u.IdRol, u.Nombre, u.Apellido, u.Login, u.Estatus, u.FechaRegistro";
     }
     // Metodo para obtener el SELECT a la tabla Usuario y el top en el caso que se utilice una base de datos SQL SERVER
     private static String obtenerSelect(Usuario pUsuario) {

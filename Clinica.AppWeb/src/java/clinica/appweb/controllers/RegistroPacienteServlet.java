@@ -12,7 +12,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 
-@WebServlet(name = "RegistroPacienteServlet", urlPatterns = {"/RegistroPacienteServlet"})
+@WebServlet(name = "RegistroPacienteServlet", urlPatterns = {"/RegistroPaciente"})
 public class RegistroPacienteServlet extends HttpServlet {
 
     
