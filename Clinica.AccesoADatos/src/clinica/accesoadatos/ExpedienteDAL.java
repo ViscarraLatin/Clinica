@@ -74,7 +74,7 @@ public class ExpedienteDAL { // Clase para poder realizar consulta de Insertar, 
         int result;
         String sql;
         
-        
+      
             try (Connection conn = ComunDB.obtenerConexion();) { // Obtener la conexion desde la clase ComunDB y encerrarla en try para cierre automatico
                 //Definir la consulta UPDATE a la tabla de Usuario utilizando el simbolo ? para enviar parametros
                 sql = "UPDATE Expediente SET IdRegistroPaciente=?, MotivoConsulta=?, Sintomas=?, SignosVitales=?, Descripcion=?, ExamenesComp=?, Diagnostico=?, Tratamiento=?, WHERE Id=?";
@@ -178,10 +178,10 @@ public class ExpedienteDAL { // Clase para poder realizar consulta de Insertar, 
                     // en el caso que el Rol no este en el HashMap se asignara
                     RegistroPacienteDAL.asignarDatosResultSet(registroPaciente, resultSet, index);
                     registroPacienteMap.put(registroPaciente.getId(), registroPaciente); // agregar el Rol al  HashMap
-                    expediente.setRegistroPacientes(registroPaciente); // agregar el Rol al Usuario
+                    expediente.setRegistroPaciente(registroPaciente); // agregar el Rol al Usuario
                 } else {
                     // En el caso que el Rol existe en el HashMap se agregara automaticamente al Usuario
-                    expediente.setRegistroPacientes(registroPacienteMap.get(expediente.getIdRegistroPaciente())); 
+                    expediente.setRegistroPaciente(registroPacienteMap.get(expediente.getIdRegistroPaciente())); 
                 }
                 pExpedientes.add(expediente); // Agregar el Usuario de la fila actual al ArrayList de Usuario
             }
@@ -290,7 +290,7 @@ public class ExpedienteDAL { // Clase para poder realizar consulta de Insertar, 
         }
          // Verificar si se va incluir el campo Login en el filtro de la consulta SELECT de la tabla de Usuario
         if (pExpediente.getExamenesComp() != null && pExpediente.getExamenesComp().trim().isEmpty() == false) {
-            pUtilQuery.AgregarWhereAnd(" p.ExamenesCompignosVitales=? "); // agregar el campo Login al filtro de la consulta SELECT y agregar en el WHERE o AND
+            pUtilQuery.AgregarWhereAnd(" p.ExamenesComp=?" ); // agregar el campo Login al filtro de la consulta SELECT y agregar en el WHERE o AND
             if (statement != null) {
                  // agregar el parametro del campo Login a la consulta SELECT de la tabla de Usuario
                 statement.setString(pUtilQuery.getNumWhere(), pExpediente.getExamenesComp());

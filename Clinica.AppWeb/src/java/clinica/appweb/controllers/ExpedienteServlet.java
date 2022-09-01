@@ -133,7 +133,7 @@ public class ExpedienteServlet extends HttpServlet {
                 RegistroPaciente registroPaciente = new RegistroPaciente();
                 registroPaciente.setId(expediente_result.getIdRegistroPaciente());
                 // Obtener desde la capa de acceso a datos el rol por Id y asignarlo al usuario.
-                expediente_result.setRegistroPacientes(RegistroPacienteDAL.obtenerPorId(registroPaciente));
+                expediente_result.setRegistroPaciente(RegistroPacienteDAL.obtenerPorId(registroPaciente));
                 // Enviar el atributo usuario con el valor de los datos del usuario de nuestra base de datos a un jsp
                 request.setAttribute("expediente", expediente_result);
             } else {

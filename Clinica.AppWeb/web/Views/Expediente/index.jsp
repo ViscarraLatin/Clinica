@@ -25,34 +25,46 @@
         <title>Buscar Expedientes</title>
 
     </head>
-    <body>
+    
         <jsp:include page="/Views/Shared/headerBody.jsp" />  
-        <main class="container">   
+           
             <h5>Buscar Expedientes</h5>
             <form action="Expediente" method="post">
                 <input type="hidden" name="accion" value="<%=request.getAttribute("accion")%>"> 
+                
                 <div class="row">
                     <div class="input-field col l4 s12">   
-                        <jsp:include page="/Views/RegistroPaciente/select.jsp">                           
-                            <jsp:param name="id" value="0" />  
-                        </jsp:include>                        
+                         <input  id="txtMotivoConsulta" type="text" name="MotivoConsulta">
+                        <label for="txtMotivoConsulta">MotivoConsulta</label>                      
                     </div>
-                     <div class="input-field col l4 s12">   
-                        <jsp:include page="/Views/RegistroPaciente/select.jsp">                           
-                            <jsp:param name="nombre" value="0" />  
-                        </jsp:include>                        
-                    </div>
-                     <div class="input-field col l4 s12">   
-                        <jsp:include page="/Views/RegistroPaciente/select.jsp">                           
-                            <jsp:param name="apellido" value="0" />  
-                        </jsp:include>                        
-                    </div>
+                   <div class="row">
                     <div class="input-field col l4 s12">   
-                        <jsp:include page="/Views/Shared/selectTop.jsp">
-                            <jsp:param name="top_aux" value="<%=top_aux%>" />                        
-                        </jsp:include>                        
-                    </div> 
-                </div>
+                         <input  id="txtSintomas" type="text" name="Sintomas">
+                        <label for="txtSintomas">Sintomas</label>                      
+                    </div>
+                   
+                      <div class="row">
+                    <div class="input-field col l4 s12">   
+                         <input  id="txtDescripcion" type="text" name="Descripcion">
+                        <label for="txtDescripcion">Descripcion</label>                      
+                    </div>
+                          
+                  <div class="row">
+                    <div class="input-field col l4 s12">   
+                         <input  id="txtExamenesComp" type="text" name="ExamenesComp">
+                        <label for="txtExamenesComp">ExamenesComp</label>                      
+                    </div>
+                  </div>
+                            <div class="row">
+                    <div class="input-field col l4 s12">   
+                         <input  id="txtDiagnostico" type="text" name="Diagnostico">
+                        <label for="txtDiagnostico">Diagnostico</label>                      
+                    </div>
+                                  <div class="row">
+                    <div class="input-field col l4 s12">   
+                         <input  id="txtTratamiento" type="text" name="Tratamiento">
+                        <label for="txtTratamiento">Tratamiento</label>                      
+                    </div>
                 <div class="row">
                     <div class="col l12 s12">
                         <button type="submit" class="waves-effect waves-light btn blue"><i class="material-icons right">search</i>Buscar</button>
@@ -88,7 +100,7 @@
                                         }
                                 %>
                                 <tr data-page="<%= tempNumPage%>">  
-                                    <td><%=expediente.getRegistroPacientes().getNombre()%></td> 
+                                    <td><%=expediente.getRegistroPaciente().getNombre()%></td> 
                                     <td><%=expediente.getMotivoConsulta()%></td>  
                                     <td><%=expediente.getSintomas()%></td>
                                     <td><%=expediente.getSignosVitales()%></td>  
@@ -123,7 +135,7 @@
                     </jsp:include>
                 </div>
             </div>
-        </main>
+        
         <jsp:include page="/Views/Shared/footerBody.jsp" />      
-    </body>
+    
 </html>

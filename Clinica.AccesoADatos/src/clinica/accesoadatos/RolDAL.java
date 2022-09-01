@@ -177,6 +177,12 @@ public class RolDAL {
                
                 statement.setString(pUtilQuery.getNumWhere(), "%" + pRol.getNombre() + "%"); 
             }
+            // if (pRol.getNombre() != null && pRol.getNombre().trim().isEmpty() == false) {
+            pUtilQuery.AgregarWhereAnd(" r.Nombre LIKE ? ");
+            if (statement != null) {
+               
+                statement.setString(pUtilQuery.getNumWhere(), "%" + pRol.getNombre() + "%"); 
+            } 
         }
     }
 

@@ -40,67 +40,8 @@
                         <input  id="txtApellido" type="text" name="apellido">
                         <label for="txtApellido">Apellido</label>
                     </div> 
-              <div class="input-field col l4 s12">
-                        <input  id="txtDui" type="text" name="dui">
-                        <label for="txtDui">Dui</label>
-                    </div> 
-             
-                  <div class="input-field col l4 s12">
-                        <input  id="txtGenero" type="text" name="Genero">
-                        <label for="txtGenero">Genero</label>
-                    </div> 
-             
-                  <div class="input-field col l4 s12">
-                        <input  id="txtFechaNac" type="text" name="FechaNac">
-                        <label for="txtFechaNac">FechaNac</label>
-                    </div> 
              
                  
-                  <div class="input-field col l4 s12">
-                        <input  id="txtLugarNac" type="text" name="lugarNac">
-                        <label for="txtLugarNac">LugarNac</label>
-                    </div> 
-             
-                                      <div class="input-field col l4 s12">
-                        <input  id="txtOcupacion" type="text" name="Ocupacion">
-                        <label for="txtOcupacion">Ocupacion</label>
-                    </div> 
-             
-                                   <div class="input-field col l4 s12">
-                        <input  id="txtTelefono" type="text" name="Telefono">
-                        <label for="txtTelefono">Telefono</label>
-                    </div> 
-             
-                                      <div class="input-field col l4 s12">
-                        <input  id="txtCelular" type="text" name="Celular">
-                        <label for="txtcelular">Celular</label>
-                    </div> 
-                                      <div class="input-field col l4 s12">
-                        <input  id="txtEmail" type="text" name="Email">
-                        <label for="txtEmail">Email</label>
-                    </div> 
-             
-                               <div class="input-field col l4 s12">
-                        <input  id="txtEstadoCivil" type="text" name="Estadocivil">
-                        <label for="txtEstadoCivil">Estado Civil</label>
-                    </div> 
-                                      <div class="input-field col l4 s12">
-                        <input  id="txtEdad" type="number" name="Edad">
-                        <label for="txtEdad">Edad</label>
-                    </div> 
-                               <div class="input-field col l4 s12">
-                        <input  id="txtDireccion" type="text" name="Direccion">
-                        <label for="txtDireccion">Direccion</label>
-                    </div> 
-                               <div class="input-field col l4 s12">
-                        <input  id="txtPeso" type="number" name="Peso">
-                        <label for="txtPeso">Peso</label>
-                    </div> 
-                               <div class="input-field col l4 s12">
-                        <input  id="txtEstatura" type="text" name="Estatura">
-                        <label for="txtEstatura">Estatura</label>
-                    </div> 
-             
                 <div class="row">
                     <div class="col l12 s12">
                         <button type="sutmit" class="waves-effect waves-light btn blue"><i class="material-icons right">search</i>Buscar</button>

@@ -5,7 +5,7 @@
 <% ArrayList<RegistroPaciente> registroPacientes = RegistroPacienteDAL.obtenerTodos();
     int id = Integer.parseInt(request.getParameter("id"));
 %>
-<select id="slRegistroPaciente" name="idRegistroPaciente">
+<select id="slRegistroPaciente" name="idRol">
     <option <%=(id == 0) ? "selected" : ""%>  value="0">SELECCIONAR</option>
     <% for (RegistroPaciente registroPaciente : registroPacientes) {%>
     <option <%=(id == registroPaciente.getId()) ? "selected" : ""%>  value="<%=registroPaciente.getId()%>"><%= registroPaciente.getNombre()%></option>

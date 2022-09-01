@@ -21,21 +21,21 @@ public class RegistroPacienteServlet extends HttpServlet {
         RegistroPaciente registroPaciente = new RegistroPaciente();
         if (accion.equals("create") == false) { registroPaciente.setId(Integer.parseInt(Utilidad.getParameter(request, "id", "0")));}
 
-        registroPaciente.setNombre(Utilidad.getParameter(request, "nombre", ""));
-        registroPaciente.setApellido(Utilidad.getParameter(request, "apellido", ""));
-        registroPaciente.setDui(Utilidad.getParameter(request, "dui", ""));
-                registroPaciente.setGenero(Utilidad.getParameter(request, "genero", ""));
-                        registroPaciente.setFechaNac(Utilidad.getParameter(request, "fechanac", ""));
-                  registroPaciente.setLugarNac(Utilidad.getParameter(request, "lugarnac", ""));   
-                          registroPaciente.setOcupacion(Utilidad.getParameter(request, "ocupacion", ""));
-                                  registroPaciente.setTelefono(Utilidad.getParameter(request, " telefono", ""));    
-                                  registroPaciente.setCelular(Utilidad.getParameter(request, "celulra", ""));
-                                          registroPaciente.setEmail(Utilidad.getParameter(request, "email", ""));
-                                                  registroPaciente.setEstadoCivil(Utilidad.getParameter(request, "estadoCivil", ""));
-                                                          registroPaciente.setEdad(Integer.parseInt(Utilidad.getParameter(request, "edad", "")));
-                                                                  registroPaciente.setDireccion(Utilidad.getParameter(request, "direccion", ""));
-                                                                          registroPaciente.setPeso(Integer.parseInt(Utilidad.getParameter(request, "peso", "")));
-                                                                                  registroPaciente.setEstatura(Utilidad.getParameter(request, "estatura", ""));
+         registroPaciente.setNombre(Utilidad.getParameter(request, "nombre", ""));
+         registroPaciente.setApellido(Utilidad.getParameter(request, "apellido", ""));
+         registroPaciente.setDui(Utilidad.getParameter(request, "dui", ""));
+         registroPaciente.setGenero(Utilidad.getParameter(request, "genero", ""));
+         registroPaciente.setFechaNac(Utilidad.getParameter(request, "fechanac", ""));
+         registroPaciente.setLugarNac(Utilidad.getParameter(request, "lugarnac", ""));
+         registroPaciente.setOcupacion(Utilidad.getParameter(request, "ocupacion", ""));
+         registroPaciente.setTelefono(Utilidad.getParameter(request, " telefono", ""));
+         registroPaciente.setCelular(Utilidad.getParameter(request, "celular", ""));
+         registroPaciente.setEmail(Utilidad.getParameter(request, "email", ""));
+         registroPaciente.setEstadoCivil(Utilidad.getParameter(request, "estadoCivil", ""));
+         registroPaciente.setEdad(Integer.parseInt(Utilidad.getParameter(request, "edad", "")));
+         registroPaciente.setDireccion(Utilidad.getParameter(request, "direccion", ""));
+         registroPaciente.setPeso(Integer.parseInt(Utilidad.getParameter(request, "peso", "")));
+         registroPaciente.setEstatura(Utilidad.getParameter(request, "estatura", ""));
         
         
         if (accion.equals("index")) {

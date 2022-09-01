@@ -12,7 +12,7 @@ public class Expediente {
      private String diagnostico;
      private String tratamiento;
      private int top_aux;
-     private RegistroPaciente registroPacientes;
+     private RegistroPaciente registroPaciente;
 
     public Expediente() {
     }
@@ -109,12 +109,12 @@ public class Expediente {
         this.top_aux = top_aux;
     }
 
-    public RegistroPaciente getRegistroPacientes() {
-        return registroPacientes;
+    public RegistroPaciente getRegistroPaciente() {
+        return registroPaciente;
     }
 
-    public void setRegistroPacientes(RegistroPaciente registroPacientes) {
-        this.registroPacientes = registroPacientes;
+    public void setRegistroPaciente(RegistroPaciente registroPaciente) {
+        this.registroPaciente = registroPaciente;
     }
 
     

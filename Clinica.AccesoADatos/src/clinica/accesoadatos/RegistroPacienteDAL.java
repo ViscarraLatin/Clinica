@@ -7,12 +7,13 @@ import clinica.entidadesdenegocio.*; // Agregar la referencia al proyecto de ent
 
 public class RegistroPacienteDAL { // Clase para poder realizar consulta de Insertar, modificar, eliminar, obtener datos de la tabla Rol
 
-    // Metodo para obtener los campos a utilizar en la consulta SELECT de la tabla de Rol
+    
     static String obtenerCampos() {
-        return "r.Id,r.Nombre,r.Apellido";
+        return "r.Id,r.Nombre,r.Apellido,r.Dui,r.Genero,r.FechaNac,r.LugarNac,r.Ocupacion,"
+                + "r.Telefono,r.Celular,r.Email,r.EstadoCivil,r.Edad,r.Direccion,r.Peso,r.Estatura";
     }
 
-    // Metodo para obtener el SELECT a la tabla Rol y el TOP en el caso que se utilice una base de datos SQL SERVER
+    
     private static String obtenerSelect(RegistroPaciente pRegistroPaciente) {
         String sql;
         sql = "SELECT ";
@@ -28,8 +29,7 @@ public class RegistroPacienteDAL { // Clase para poder realizar consulta de Inse
     private static String agregarOrderBy(RegistroPaciente pRegistroPaciente) {
         String sql = " ORDER BY r.Id DESC";
         if (pRegistroPaciente.getTop_aux() > 0 && ComunDB.TIPODB == ComunDB.TipoDB.MYSQL) {
-            // Agregar el LIMIT a la consulta SELECT de la tabla de Rol en el caso que getTop_aux() sea mayor a cero y el gestor de base de datos
-            // sea MYSQL
+            
             sql += " LIMIT " + pRegistroPaciente.getTop_aux() + " ";
         }
         return sql;
@@ -39,17 +39,32 @@ public class RegistroPacienteDAL { // Clase para poder realizar consulta de Inse
         int result;
         String sql;
         try (Connection conn = ComunDB.obtenerConexion();) { // Obtener la conexion desde la clase ComunDB y encerrarla en try para cierre automatico
-            sql = "INSERT INTO RegistroPaciente (Nombre) VALUES(?)"; // Definir la consulta INSERT a la tabla de Rol utilizando el simbolo ? para enviar parametros
+            sql = "INSERT INTO RegistroPaciente (Nombre,Apellido,Dui,Genero,FechaNac,LugarNac,Ocupacion,"
+                    + "Telefono,Celular,Email,EstadoCivil,Edad,Direccion,Peso,Estatura) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"; 
             try (PreparedStatement ps = ComunDB.createPreparedStatement(conn, sql);) { // Obtener el PreparedStatement desde la clase ComunDB
-                ps.setString(1, pRegistroPaciente.getNombre()); // Agregar el parametro a la consulta donde estan el simbolo ? #1  
-                result = ps.executeUpdate(); // Ejecutar la consulta INSERT en la base de datos
-                ps.close(); // Cerrar el PreparedStatement
+                ps.setString(1, pRegistroPaciente.getNombre());
+                ps.setString(2, pRegistroPaciente.getApellido());
+                ps.setString(3, pRegistroPaciente.getDui());
+                ps.setString(4, pRegistroPaciente.getGenero());
+                ps.setString(5, pRegistroPaciente.getFechaNac());
+                 ps.setString(6, pRegistroPaciente.getLugarNac());
+                  ps.setString(7, pRegistroPaciente.getOcupacion());
+                    ps.setString(8, pRegistroPaciente.getTelefono());
+                      ps.setString(9, pRegistroPaciente.getCelular());
+                        ps.setString(10, pRegistroPaciente.getEmail());
+                          ps.setString(11, pRegistroPaciente.getEstadoCivil());
+                            ps.setInt(12, pRegistroPaciente.getEdad());
+                              ps.setString(13, pRegistroPaciente.getDireccion());
+                                ps.setInt(14, pRegistroPaciente.getPeso());
+                                  ps.setString(15, pRegistroPaciente.getEstatura());
+                result = ps.executeUpdate(); 
+                ps.close(); 
             } catch (SQLException ex) {
                 throw ex; // Enviar al siguiente metodo el error al ejecutar PreparedStatement en el caso que suceda 
             }
-            conn.close(); // Cerrar la conexion a la base de datos
+            conn.close(); 
         } catch (SQLException ex) {
-            throw ex; // Enviar al siguiente metodo el error al obtener la conexion en el caso que suceda 
+            throw ex; 
         }
         return result; // Retornar el numero de fila afectadas en el INSERT en la base de datos 
     }
@@ -59,20 +74,35 @@ public class RegistroPacienteDAL { // Clase para poder realizar consulta de Inse
         int result;
         String sql;
         try (Connection conn = ComunDB.obtenerConexion();) { // Obtener la conexion desde la clase ComunDB y encerrarla en try para cierre automatico
-            sql = "UPDATE RegistroPaciente SET Nombre=? WHERE Id=?"; // Definir la consulta UPDATE a la tabla de Rol utilizando el simbolo ? para enviar parametros
-            try (PreparedStatement ps = ComunDB.createPreparedStatement(conn, sql);) { // Obtener el PreparedStatement desde la clase ComunDB
-                ps.setString(1, pRegistroPaciente.getNombre()); // Agregar el parametro a la consulta donde estan el simbolo ? #1  
-                ps.setInt(2, pRegistroPaciente.getId()); // Agregar el parametro a la consulta donde estan el simbolo ? #2  
-                result = ps.executeUpdate(); // Ejecutar la consulta UPDATE en la base de datos
-                ps.close(); // Cerrar el PreparedStatement
+            sql = "UPDATE RegistroPaciente SET Nombre=?, Apellido=?, Dui=?, Genero=?, FechaNac=?, LugarNac=?, Ocupacion=?,"
+                    + "Telefono=?, Celular=?, Email=?, EstadoCivil=?, Edad=?, Direccion=?, Peso=?, Estatura=? WHERE Id=?"; 
+            try (PreparedStatement ps = ComunDB.createPreparedStatement(conn, sql);) { 
+                ps.setString(1, pRegistroPaciente.getNombre()); 
+                ps.setString(2, pRegistroPaciente.getApellido()); 
+                ps.setString(3, pRegistroPaciente.getDui()); 
+                ps.setString(4, pRegistroPaciente.getGenero()); 
+                ps.setString(5, pRegistroPaciente.getFechaNac()); 
+                ps.setString(6, pRegistroPaciente.getLugarNac()); 
+                ps.setString(7, pRegistroPaciente.getOcupacion()); 
+                ps.setString(8, pRegistroPaciente.getTelefono()); 
+                ps.setString(9, pRegistroPaciente.getCelular()); 
+                ps.setString(10, pRegistroPaciente.getEmail()); 
+                ps.setString(11, pRegistroPaciente.getEstadoCivil());
+                ps.setInt(12, pRegistroPaciente.getEdad()); 
+                ps.setString(13, pRegistroPaciente.getDireccion()); 
+                ps.setInt(14, pRegistroPaciente.getPeso()); 
+                ps.setString(15, pRegistroPaciente.getEstatura()); 
+                ps.setInt(16, pRegistroPaciente.getId());   
+                result = ps.executeUpdate();
+                ps.close(); 
             } catch (SQLException ex) {
-                throw ex;  // Enviar al siguiente metodo el error al ejecutar PreparedStatement en el caso que suceda 
+                throw ex;  
             }
             conn.close(); // Cerrar la conexion a la base de datos
         } catch (SQLException ex) {
-            throw ex; // Enviar al siguiente metodo el error al obtener la conexion en el caso que suceda 
+            throw ex; 
         }
-        return result; // Retornar el numero de fila afectadas en el UPDATE en la base de datos 
+        return result; 
     }
 
     // Metodo para poder eliminar un registro en la tabla de Rol
@@ -82,7 +112,23 @@ public class RegistroPacienteDAL { // Clase para poder realizar consulta de Inse
         try (Connection conn = ComunDB.obtenerConexion();) { // Obtener la conexion desde la clase ComunDB y encerrarla en try para cierre automatico
             sql = "DELETE FROM RegistroPaciente WHERE Id=?";  // Definir la consulta DELETE a la tabla de Rol utilizando el simbolo ? para enviar parametros
             try (PreparedStatement ps = ComunDB.createPreparedStatement(conn, sql);) { // Obtener el PreparedStatement desde la clase ComunDB
-                ps.setInt(1, pRegistroPaciente.getId()); // Agregar el parametro a la consulta donde estan el simbolo ? #1 
+                ps.setInt(0, pRegistroPaciente.getId());
+                   ps.setString(1, pRegistroPaciente.getNombre());
+                ps.setString(2, pRegistroPaciente.getApellido()); 
+                ps.setString(3, pRegistroPaciente.getDui()); 
+                ps.setString(4, pRegistroPaciente.getGenero()); 
+                ps.setString(5, pRegistroPaciente.getFechaNac()); 
+                ps.setString(6, pRegistroPaciente.getLugarNac()); 
+                ps.setString(7, pRegistroPaciente.getOcupacion()); 
+                ps.setString(8, pRegistroPaciente.getTelefono()); 
+                ps.setString(9, pRegistroPaciente.getCelular()); 
+                ps.setString(10, pRegistroPaciente.getEmail()); 
+                ps.setString(11, pRegistroPaciente.getEstadoCivil());
+                ps.setInt(12, pRegistroPaciente.getEdad()); 
+                ps.setString(13, pRegistroPaciente.getDireccion()); 
+                ps.setInt(14, pRegistroPaciente.getPeso()); 
+                ps.setString(15, pRegistroPaciente.getEstatura()); 
+               // ps.setInt(16, pRegistroPaciente.getId());   // Agregar el parametro a la consulta donde estan el simbolo ? #1 
                 result = ps.executeUpdate();  // Ejecutar la consulta DELETE en la base de datos
                 ps.close(); // Cerrar el PreparedStatement
             } catch (SQLException ex) {
@@ -100,9 +146,73 @@ public class RegistroPacienteDAL { // Clase para poder realizar consulta de Inse
     static int asignarDatosResultSet(RegistroPaciente pRegistroPaciente, ResultSet pResultSet, int pIndex) throws Exception {
         //  SELECT r.Id(indice 1),r.Nombre(indice 2) * FROM Rol
         pIndex++;
-        pRegistroPaciente.setId(pResultSet.getInt(pIndex)); // index 1
+        pRegistroPaciente.setId(pResultSet.getInt(pIndex)); 
+        
         pIndex++;
-        pRegistroPaciente.setNombre(pResultSet.getString(pIndex)); // index 2
+        pRegistroPaciente.setNombre(pResultSet.getString(pIndex)); 
+        
+        
+        
+        pIndex++;
+        pRegistroPaciente.setApellido(pResultSet.getString(pIndex)); 
+        
+        
+        
+        pIndex++;
+        pRegistroPaciente.setDui(pResultSet.getString(pIndex)); 
+        
+        
+        
+       
+        pIndex++;
+        pRegistroPaciente.setGenero(pResultSet.getString(pIndex)); 
+        
+        
+        
+     
+        pIndex++;
+        pRegistroPaciente.setFechaNac(pResultSet.getString(pIndex)); 
+        
+        
+        pIndex++;
+        pRegistroPaciente.setLugarNac(pResultSet.getString(pIndex)); 
+        
+        pIndex++;
+        pRegistroPaciente.setOcupacion(pResultSet.getString(pIndex)); 
+        
+      
+        pIndex++;
+        pRegistroPaciente.setTelefono(pResultSet.getString(pIndex)); 
+        
+        
+       
+        pIndex++;
+        pRegistroPaciente.setCelular(pResultSet.getString(pIndex)); 
+        
+       
+        pIndex++;
+        pRegistroPaciente.setEmail(pResultSet.getString(pIndex)); 
+        
+      
+        pIndex++;
+        pRegistroPaciente.setEstadoCivil(pResultSet.getString(pIndex)); 
+        
+        
+        pIndex++;
+        pRegistroPaciente.setEdad(pResultSet.getInt(pIndex)); 
+        
+       
+        pIndex++;
+        pRegistroPaciente.setDireccion(pResultSet.getString(pIndex)); 
+        
+      
+        pIndex++;
+        pRegistroPaciente.setPeso(pResultSet.getInt(pIndex)); 
+  
+        pIndex++;
+        pRegistroPaciente.setEstatura(pResultSet.getString(pIndex)); 
+        
+      
         return pIndex;
     }
     // Metodo para  ejecutar el ResultSet de la consulta SELECT a la tabla de Rol 
@@ -128,7 +238,8 @@ public class RegistroPacienteDAL { // Clase para poder realizar consulta de Inse
             sql += " WHERE r.Id=?"; // Concatenar a la consulta SELECT de la tabla Rol el WHERE 
             try (PreparedStatement ps = ComunDB.createPreparedStatement(conn, sql);) { // Obtener el PreparedStatement desde la clase ComunDB
                 ps.setInt(1, pRegistroPaciente.getId()); // Agregar el parametro a la consulta donde estan el simbolo ? #1 
-                obtenerDatos(ps, registroPacientes); // Llenar el ArrayList de Rol con las fila que devolvera la consulta SELECT a la tabla de Rol
+                obtenerDatos(ps, registroPacientes);
+// Llenar el ArrayList de Rol con las fila que devolvera la consulta SELECT a la tabla de Rol
                 ps.close(); // Cerrar el PreparedStatement
             } catch (SQLException ex) {
                 throw ex;  // Enviar al siguiente metodo el error al ejecutar PreparedStatement en el caso que suceda
@@ -183,10 +294,114 @@ public class RegistroPacienteDAL { // Clase para poder realizar consulta de Inse
                 statement.setString(pUtilQuery.getNumWhere(), "%" + pRegistroPaciente.getNombre() + "%"); 
             }
         }
+         if (pRegistroPaciente.getApellido() != null && pRegistroPaciente.getApellido().trim().isEmpty() == false) {
+            pUtilQuery.AgregarWhereAnd(" r.Apellido LIKE ? "); // Agregar el campo Nombre al filtro de la consulta SELECT y agregar en el WHERE o AND
+            if (statement != null) {
+                // Agregar el parametro del campo Nombre a la consulta SELECT de la tabla de Rol
+                statement.setString(pUtilQuery.getNumWhere(), "%" + pRegistroPaciente.getApellido() + "%"); 
+            }
+        }
+        
+          if (pRegistroPaciente.getDui() != null && pRegistroPaciente.getDui().trim().isEmpty() == false) {
+            pUtilQuery.AgregarWhereAnd(" r.Dui LIKE ? "); // Agregar el campo Nombre al filtro de la consulta SELECT y agregar en el WHERE o AND
+            if (statement != null) {
+                // Agregar el parametro del campo Nombre a la consulta SELECT de la tabla de Rol
+                statement.setString(pUtilQuery.getNumWhere(), "%" + pRegistroPaciente.getDui() + "%"); 
+            }
+        }
+           if (pRegistroPaciente.getGenero() != null && pRegistroPaciente.getGenero().trim().isEmpty() == false) {
+            pUtilQuery.AgregarWhereAnd(" r.Genero LIKE ? "); // Agregar el campo Nombre al filtro de la consulta SELECT y agregar en el WHERE o AND
+            if (statement != null) {
+                // Agregar el parametro del campo Nombre a la consulta SELECT de la tabla de Rol
+                statement.setString(pUtilQuery.getNumWhere(), "%" + pRegistroPaciente.getGenero() + "%"); 
+            }
+        }
+            if (pRegistroPaciente.getFechaNac() != null && pRegistroPaciente.getFechaNac().trim().isEmpty() == false) {
+            pUtilQuery.AgregarWhereAnd(" r.FechaNac LIKE ? "); // Agregar el campo Nombre al filtro de la consulta SELECT y agregar en el WHERE o AND
+            if (statement != null) {
+                // Agregar el parametro del campo Nombre a la consulta SELECT de la tabla de Rol
+                statement.setString(pUtilQuery.getNumWhere(), "%" + pRegistroPaciente.getFechaNac() + "%"); 
+            }
+        }
+             if (pRegistroPaciente.getLugarNac() != null && pRegistroPaciente.getLugarNac().trim().isEmpty() == false) {
+            pUtilQuery.AgregarWhereAnd(" r.LugarNac LIKE ? "); // Agregar el campo Nombre al filtro de la consulta SELECT y agregar en el WHERE o AND
+            if (statement != null) {
+                // Agregar el parametro del campo Nombre a la consulta SELECT de la tabla de Rol
+                statement.setString(pUtilQuery.getNumWhere(), "%" + pRegistroPaciente.getLugarNac() + "%"); 
+            }
+        }
+            
+               if (pRegistroPaciente.getOcupacion() != null && pRegistroPaciente.getOcupacion().trim().isEmpty() == false) {
+            pUtilQuery.AgregarWhereAnd(" r.Ocupacion LIKE ? "); // Agregar el campo Nombre al filtro de la consulta SELECT y agregar en el WHERE o AND
+            if (statement != null) {
+                // Agregar el parametro del campo Nombre a la consulta SELECT de la tabla de Rol
+                statement.setString(pUtilQuery.getNumWhere(), "%" + pRegistroPaciente.getOcupacion() + "%"); 
+            }
+        }
+                if (pRegistroPaciente.getTelefono() != null && pRegistroPaciente.getTelefono().trim().isEmpty() == false) {
+            pUtilQuery.AgregarWhereAnd(" r.Telefono LIKE ? "); // Agregar el campo Nombre al filtro de la consulta SELECT y agregar en el WHERE o AND
+            if (statement != null) {
+                // Agregar el parametro del campo Nombre a la consulta SELECT de la tabla de Rol
+                statement.setString(pUtilQuery.getNumWhere(), "%" + pRegistroPaciente.getTelefono() + "%"); 
+            }
+        }
+                if (pRegistroPaciente.getCelular() != null && pRegistroPaciente.getCelular().trim().isEmpty() == false) {
+            pUtilQuery.AgregarWhereAnd(" r.Celular LIKE ? "); // Agregar el campo Nombre al filtro de la consulta SELECT y agregar en el WHERE o AND
+            if (statement != null) {
+                // Agregar el parametro del campo Nombre a la consulta SELECT de la tabla de Rol
+                statement.setString(pUtilQuery.getNumWhere(), "%" + pRegistroPaciente.getCelular() + "%"); 
+            }
+        }
+                
+                if (pRegistroPaciente.getEmail() != null && pRegistroPaciente.getEmail().trim().isEmpty() == false) {
+            pUtilQuery.AgregarWhereAnd(" r.Email LIKE ? "); // Agregar el campo Nombre al filtro de la consulta SELECT y agregar en el WHERE o AND
+            if (statement != null) {
+                // Agregar el parametro del campo Nombre a la consulta SELECT de la tabla de Rol
+                statement.setString(pUtilQuery.getNumWhere(), "%" + pRegistroPaciente.getEmail() + "%"); 
+            }
+        }
+                if (pRegistroPaciente.getEstadoCivil() != null && pRegistroPaciente.getEstadoCivil().trim().isEmpty() == false) {
+            pUtilQuery.AgregarWhereAnd(" r.EstadoCivil LIKE ? "); // Agregar el campo Nombre al filtro de la consulta SELECT y agregar en el WHERE o AND
+            if (statement != null) {
+                // Agregar el parametro del campo Nombre a la consulta SELECT de la tabla de Rol
+                statement.setString(pUtilQuery.getNumWhere(), "%" + pRegistroPaciente.getEstadoCivil() + "%"); 
+            }
+        } 
+          
+                if (pRegistroPaciente.getEdad()> 0) { // Verificar si se va incluir el campo Id en el filtro de la consulta SELECT de la tabla de Rol
+            pUtilQuery.AgregarWhereAnd(" r.Edad LIKE ? "); // Agregar el campo Id al filtro de la consulta SELECT y agregar en el WHERE o AND
+            if (statement != null) { 
+                // Agregar el parametro del campo Id a la consulta SELECT de la tabla de Rol
+                statement.setInt(pUtilQuery.getNumWhere(), pRegistroPaciente.getEdad()); 
+            }
+        }       
+        
+                if (pRegistroPaciente.getDireccion() != null && pRegistroPaciente.getDireccion().trim().isEmpty() == false) {
+            pUtilQuery.AgregarWhereAnd(" r.Direccion LIKE ? "); // Agregar el campo Nombre al filtro de la consulta SELECT y agregar en el WHERE o AND
+            if (statement != null) {
+                // Agregar el parametro del campo Nombre a la consulta SELECT de la tabla de Rol
+                statement.setString(pUtilQuery.getNumWhere(), "%" + pRegistroPaciente.getDireccion() + "%"); 
+            }
+                }
+        
+            //   if (pRegistroPaciente.getPeso() > 0) {
+            pUtilQuery.AgregarWhereAnd(" r.Peso LIKE ? "); // Agregar el campo Nombre al filtro de la consulta SELECT y agregar en el WHERE o AND
+            if (statement != null) {
+                // Agregar el parametro del campo Nombre a la consulta SELECT de la tabla de Rol
+                statement.setInt(pUtilQuery.getNumWhere(), pRegistroPaciente.getPeso()); 
+            
+        }
+                
+                 if (pRegistroPaciente.getEstatura() != null && pRegistroPaciente.getEstatura().trim().isEmpty() == false) {
+            pUtilQuery.AgregarWhereAnd(" r.Estatura LIKE ? "); // Agregar el campo Nombre al filtro de la consulta SELECT y agregar en el WHERE o AND
+            if (statement != null) {
+                // Agregar el parametro del campo Nombre a la consulta SELECT de la tabla de Rol
+                statement.setString(pUtilQuery.getNumWhere(), "%" + pRegistroPaciente.getEstatura() + "%"); 
+            }
+        }
+             
     }
-
-     // Metodo para obtener todos los registro de la tabla de Rol que cumplan con los filtros agregados 
-     // a la consulta SELECT de la tabla de Rol 
+               
     public static ArrayList<RegistroPaciente> buscar(RegistroPaciente pRegistroPaciente) throws Exception {
         ArrayList<RegistroPaciente> registroPacientes = new ArrayList();
         try (Connection conn = ComunDB.obtenerConexion();) { // Obtener la conexion desde la clase ComunDB y encerrarla en try para cierre automatico

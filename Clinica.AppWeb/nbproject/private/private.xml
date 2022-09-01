@@ -31,24 +31,14 @@
             <file>file:/C:/Users/royal/OneDrive/Desktop/clinica2022/Clinica/Clinica.AppWeb/src/java/clinica/appweb/utils/SessionUser.java</file>
         </group>
         <group name="CLINICA22">
-            <file>file:/C:/Users/KATHYA%20VISCARRA/OneDrive/Escritorio/CLINICA22/Clinica.AppWeb/web/Views/Shared/headerBody.jsp</file>
-            <file>file:/C:/Users/KATHYA%20VISCARRA/OneDrive/Escritorio/CLINICA22/Clinica.AppWeb/web/Views/Expediente/create.jsp</file>
-            <file>file:/C:/Users/KATHYA%20VISCARRA/OneDrive/Escritorio/CLINICA22/Clinica.AppWeb/web/Views/Expediente/delete.jsp</file>
-            <file>file:/C:/Users/KATHYA%20VISCARRA/OneDrive/Escritorio/CLINICA22/Clinica.AppWeb/web/Views/Shared/paginacion.jsp</file>
-            <file>file:/C:/Users/KATHYA%20VISCARRA/OneDrive/Escritorio/CLINICA22/Clinica.AppWeb/src/java/clinica/appweb/controllers/UsuarioServlet.java</file>
             <file>file:/C:/Users/KATHYA%20VISCARRA/OneDrive/Escritorio/CLINICA22/Clinica.AppWeb/web/index.jsp</file>
             <file>file:/C:/Users/KATHYA%20VISCARRA/OneDrive/Escritorio/CLINICA22/Clinica.AppWeb/src/java/clinica/appweb/controllers/RegistroPacienteServlet.java</file>
-            <file>file:/C:/Users/KATHYA%20VISCARRA/OneDrive/Escritorio/CLINICA22/Clinica.AppWeb/web/Views/Usuario/create.jsp</file>
-            <file>file:/C:/Users/KATHYA%20VISCARRA/OneDrive/Escritorio/CLINICA22/Clinica.AppWeb/web/Views/Usuario/delete.jsp</file>
-            <file>file:/C:/Users/KATHYA%20VISCARRA/OneDrive/Escritorio/CLINICA22/Clinica.AppWeb/web/Views/Rol/select.jsp</file>
-            <file>file:/C:/Users/KATHYA%20VISCARRA/OneDrive/Escritorio/CLINICA22/Clinica.AppWeb/web/Views/RegistroPaciente/select.jsp</file>
-            <file>file:/C:/Users/KATHYA%20VISCARRA/OneDrive/Escritorio/CLINICA22/Clinica.AppWeb/src/java/clinica/appweb/controllers/HomeServlet.java</file>
-            <file>file:/C:/Users/KATHYA%20VISCARRA/OneDrive/Escritorio/CLINICA22/Clinica.AppWeb/src/java/clinica/appweb/controllers/RolServlet.java</file>
-            <file>file:/C:/Users/KATHYA%20VISCARRA/OneDrive/Escritorio/CLINICA22/Clinica.AppWeb/web/Views/Expediente/index.jsp</file>
-            <file>file:/C:/Users/KATHYA%20VISCARRA/OneDrive/Escritorio/CLINICA22/Clinica.AppWeb/web/Views/Usuario/details.jsp</file>
-            <file>file:/C:/Users/KATHYA%20VISCARRA/OneDrive/Escritorio/CLINICA22/Clinica.AppWeb/web/Views/Usuario/login.jsp</file>
+            <file>file:/C:/Users/KATHYA%20VISCARRA/OneDrive/Escritorio/CLINICA22/Clinica.AppWeb/web/Views/Shared/title.jsp</file>
+            <file>file:/C:/Users/KATHYA%20VISCARRA/OneDrive/Escritorio/CLINICA22/Clinica.AppWeb/web/Views/RegistroPaciente/create.jsp</file>
+            <file>file:/C:/Users/KATHYA%20VISCARRA/OneDrive/Escritorio/CLINICA22/Clinica.AppWeb/web/Views/Rol/create.jsp</file>
             <file>file:/C:/Users/KATHYA%20VISCARRA/OneDrive/Escritorio/CLINICA22/Clinica.AppWeb/web/Views/Usuario/index.jsp</file>
             <file>file:/C:/Users/KATHYA%20VISCARRA/OneDrive/Escritorio/CLINICA22/Clinica.AppWeb/src/java/clinica/appweb/controllers/ExpedienteServlet.java</file>
+            <file>file:/C:/Users/KATHYA%20VISCARRA/OneDrive/Escritorio/CLINICA22/Clinica.AppWeb/web/Views/RegistroPaciente/index.jsp</file>
         </group>
     </open-files>
 </project-private>

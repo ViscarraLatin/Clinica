@@ -16,7 +16,7 @@
         <jsp:include page="/Views/Shared/headerBody.jsp" />  
         <main class="container">   
             <h5>Crear Registro Paciente</h5>
-            <form action="RegistroPaciente" method="post" onsubmit="return  validarFormulario()">
+            <form action="RegistroPaciente" method="post">
                 <input type="hidden" name="accion" value="<%=request.getAttribute("accion")%>">                
                 <div class="row">
                     <div class="input-field col l4 s12">
@@ -30,56 +30,56 @@
                     </div>    
                      <div class="input-field col l4 s12">
                         <input  id="txtDui" type="text" name="dui" required class="validate" maxlength="30">
-                        <label for="txtDui">DUI</label>
+                        <label for="txtDui">Dui</label>
                     </div>    
                      <div class="input-field col l4 s12">
                         <input  id="txtGenero" type="text" name="genero" required class="validate" maxlength="30">
                         <label for="txtGenero">Genero</label>
                     </div>    
                     <div class="input-field col l4 s12">
-                        <input  id="txtFechaNac" type="text" name="fechaNac" required class="validate" maxlength="30">
-                        <label for="txtFechaNac">FechaNac</label>
+                        <input  id="txtFechaNac" type="text" name="FechaNac" required class="validate" maxlength="30">
+                        <label for="txtFechaNac"></label>
                     </div>    
                        <div class="input-field col l4 s12">
-                        <input  id="txtLugarNac" type="text" name="lugarNac" required class="validate" maxlength="30">
-                        <label for="txtLugarNac">LugarNac</label>
+                        <input  id="txtLugarNac" type="text" name="LugarNac" required class="validate" maxlength="30">
+                        <label for="txtLugarNac"></label>
                     </div>    
                        <div class="input-field col l4 s12">
                         <input  id="txtOcupacion" type="text" name="ocupacion" required class="validate" maxlength="30">
-                        <label for="txtOcupacion">Ocupacion</label>
+                        <label for="txtOcupacion"></label>
                     </div>    
                     
                        <div class="input-field col l4 s12">
-                        <input  id="txtTelefono" type="text" name="telefono" required class="validate" maxlength="30">
-                        <label for="txtTelefono">Telefono</label>
+                        <input  id="txtTelefono" type="text" name="Telefono" required class="validate" maxlength="30">
+                        <label for="txtTelefono"></label>
                     </div>    
                        <div class="input-field col l4 s12">
-                        <input  id="txtCelular" type="text" name="celular" required class="validate" maxlength="30">
-                        <label for="txtCelular">celular</label>
+                        <input  id="txtCelular" type="text" name="Celular" required class="validate" maxlength="30">
+                        <label for="txtlarCelu"></label>
                     </div>    
                        <div class="input-field col l4 s12">
-                        <input  id="txtEmail" type="text" name="email" required class="validate" maxlength="30">
-                        <label for="txtEmail">Email</label>
+                        <input  id="txtEmail" type="text" name="Email" required class="validate" maxlength="30">
+                        <label for="txtEmail"></label>
                     </div>    
                        <div class="input-field col l4 s12">
-                        <input  id="txtEstadoCivil" type="text" name="estadoCivil" required class="validate" maxlength="30">
-                        <label for="txtEstadoCivil">Estado Civil</label>
+                        <input  id="txtEstadoCivil" type="text" name="Estadocivil" required class="validate" maxlength="30">
+                        <label for="txt"></label>
                     </div>    
                        <div class="input-field col l4 s12">
-                        <input  id="txtEdad" type="number" name="edad" required class="validate" maxlength="30">
-                        <label for="txtEdad">Edad</label>
+                        <input  id="txtEdad" type="text" name="Edad" required class="validate" maxlength="30">
+                        <label for="txtEdad"></label>
                     </div>    
                        <div class="input-field col l4 s12">
                         <input  id="txtDireccion" type="text" name="direccion" required class="validate" maxlength="30">
-                        <label for="txtDireccion">Direccion</label>
+                        <label for="txtDireccion"></label>
                     </div>    
                        <div class="input-field col l4 s12">
-                        <input  id="txtPeso" type="number" name="peso" required class="validate" maxlength="30">
-                        <label for="intPeso">Peso</label>
+                        <input  id="txtPeso" type="text" name="Peso" required class="validate" maxlength="30">
+                        <label for="txtPeso"></label>
                     </div>    
                        <div class="input-field col l4 s12">
-                        <input  id="txtEstatura" type="text" name="estatura" required class="validate" maxlength="30">
-                        <label for="txtEstatura">Estatura</label>
+                        <input  id="txtEstatura" type="text" name="Estatura" required class="validate" maxlength="30">
+                        <label for="txtEstatura"></label>
                     </div>    
                 </div>
                 <div class="row">
