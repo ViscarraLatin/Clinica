@@ -31,38 +31,42 @@
             <h5>Buscar Expedientes</h5>
             <form action="Expediente" method="post">
                 <input type="hidden" name="accion" value="<%=request.getAttribute("accion")%>"> 
-                
+                 <div class="row">
+                    <div class="input-field col l4 s12">   
+                         <input  id="txtRegistroPaciente" type="text" name="registroPaciente">
+                        <label for="txtRegistroPaciente">RegistroPaciente</label>                      
+                    </div>
                 <div class="row">
                     <div class="input-field col l4 s12">   
-                         <input  id="txtMotivoConsulta" type="text" name="MotivoConsulta">
+                         <input  id="txtMotivoConsulta" type="text" name="motivoConsulta">
                         <label for="txtMotivoConsulta">MotivoConsulta</label>                      
-                    </div>
+                    </div> 
                    <div class="row">
                     <div class="input-field col l4 s12">   
-                         <input  id="txtSintomas" type="text" name="Sintomas">
+                         <input  id="txtSintomas" type="text" name="sintomas">
                         <label for="txtSintomas">Sintomas</label>                      
                     </div>
                    
                       <div class="row">
                     <div class="input-field col l4 s12">   
-                         <input  id="txtDescripcion" type="text" name="Descripcion">
+                         <input  id="txtDescripcion" type="text" name="descripcion">
                         <label for="txtDescripcion">Descripcion</label>                      
                     </div>
                           
                   <div class="row">
                     <div class="input-field col l4 s12">   
-                         <input  id="txtExamenesComp" type="text" name="ExamenesComp">
+                         <input  id="txtExamenesComp" type="text" name="examenesComp">
                         <label for="txtExamenesComp">ExamenesComp</label>                      
                     </div>
                   </div>
                             <div class="row">
                     <div class="input-field col l4 s12">   
-                         <input  id="txtDiagnostico" type="text" name="Diagnostico">
+                         <input  id="txtDiagnostico" type="text" name="diagnostico">
                         <label for="txtDiagnostico">Diagnostico</label>                      
                     </div>
                                   <div class="row">
                     <div class="input-field col l4 s12">   
-                         <input  id="txtTratamiento" type="text" name="Tratamiento">
+                         <input  id="txtTratamiento" type="text" name="tratamiento">
                         <label for="txtTratamiento">Tratamiento</label>                      
                     </div>
                 <div class="row">

@@ -35,7 +35,6 @@ public class ExpedienteServlet extends HttpServlet {
         expediente.setTratamiento(Utilidad.getParameter(request, "tratamiento", ""));
         // Obtener el parámetro idRol del request  y asignar ese valor a la propiedad IdRol de Usuario.
         expediente.setIdRegistroPaciente(Integer.parseInt(Utilidad.getParameter(request, "idRegistroPaciente", "0")));
-        // Obtener el parámetro estatus del request  y asignar ese valor a la propiedad Estatus de Usuario.
        
         if (accion.equals("index")) {
             // Obtener el parámetro top_aux del request  y asignar ese valor a la propiedad Top_aux de Usuario.

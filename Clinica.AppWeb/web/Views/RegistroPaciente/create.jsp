@@ -37,11 +37,11 @@
                         <label for="txtGenero">Genero</label>
                     </div>    
                     <div class="input-field col l4 s12">
-                        <input  id="txtFechaNac" type="text" name="fechaNac" required class="validate" maxlength="30">
+                        <input  id="txtFechaNac" type="text" name="fechanac" required class="validate" maxlength="30">
                         <label for="txtFechaNac">FechaNac</label>
                     </div>    
                        <div class="input-field col l4 s12">
-                        <input  id="txtLugarNac" type="text" name="lugarNac" required class="validate" maxlength="30">
+                        <input  id="txtLugarNac" type="text" name="lugarnac" required class="validate" maxlength="30">
                         <label for="txtLugarNac">LugarNac</label>
                     </div>    
                        <div class="input-field col l4 s12">

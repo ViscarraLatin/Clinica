@@ -109,7 +109,16 @@ public class ExpedienteDAL { // Clase para poder realizar consulta de Insertar, 
         try (Connection conn = ComunDB.obtenerConexion();) { // Obtener la conexion desde la clase ComunDB y encerrarla en try para cierre automatico
             sql = "DELETE FROM Expediente WHERE Id=?"; //definir la consulta DELETE a la tabla de Usuario utilizando el simbolo ? para enviar parametros
             try (PreparedStatement ps = ComunDB.createPreparedStatement(conn, sql);) {  // obtener el PreparedStatement desde la clase ComunDB
-                ps.setInt(1, pExpediente.getId()); // agregar el parametro a la consulta donde estan el simbolo ? #1 
+                ps.setInt(1, pExpediente.getId()); ps.setString
+                        (2, pExpediente.getMotivoConsulta()); // agregar el parametro a la consulta donde estan el simbolo ? #2  
+                    ps.setString(3, pExpediente.getSintomas()); // agregar el parametro a la consulta donde estan el simbolo ? #3   
+                    ps.setString(4, pExpediente.getSignosVitales());
+                    ps.setString(5, pExpediente.getDescripcion());
+                    ps.setString(6, pExpediente.getExamenesComp());
+                    ps.setString(7, pExpediente.getDiagnostico());
+                    ps.setString(8, pExpediente.getTratamiento());
+                    ps.setInt(9, pExpediente.getId());
+                // agregar el parametro a la consulta donde estan el simbolo ? #1 
                 result = ps.executeUpdate(); // ejecutar la consulta DELETE en la base de datos
                 ps.close(); // cerrar el PreparedStatement
             } catch (SQLException ex) {
@@ -130,20 +139,28 @@ public class ExpedienteDAL { // Clase para poder realizar consulta de Insertar, 
         // u.Estatus(indice 6), u.FechaRegistro(indice 7) * FROM Usuario
         pIndex++;
         pExpediente.setId(pResultSet.getInt(pIndex)); // index 1
+        
         pIndex++;
         pExpediente.setIdRegistroPaciente(pResultSet.getInt(pIndex)); // index 2
+        
         pIndex++;
         pExpediente.setMotivoConsulta(pResultSet.getString(pIndex)); // index 3
+        
         pIndex++;
         pExpediente.setSintomas(pResultSet.getString(pIndex)); // index 4
+        
         pIndex++;
         pExpediente.setSignosVitales(pResultSet.getString(pIndex)); // index 5
+        
         pIndex++;
         pExpediente.setDescripcion(pResultSet.getString(pIndex)); // index 6
+        
         pIndex++;
         pExpediente.setExamenesComp(pResultSet.getString(pIndex)); // index 6
+        
         pIndex++;
         pExpediente.setDiagnostico(pResultSet.getString(pIndex)); // index 6
+        
         pIndex++;
         pExpediente.setTratamiento(pResultSet.getString(pIndex)); // index 6
         return pIndex;

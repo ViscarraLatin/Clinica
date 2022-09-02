@@ -28,7 +28,7 @@ public class RegistroPacienteServlet extends HttpServlet {
          registroPaciente.setFechaNac(Utilidad.getParameter(request, "fechanac", ""));
          registroPaciente.setLugarNac(Utilidad.getParameter(request, "lugarnac", ""));
          registroPaciente.setOcupacion(Utilidad.getParameter(request, "ocupacion", ""));
-         registroPaciente.setTelefono(Utilidad.getParameter(request, " telefono", ""));
+         registroPaciente.setTelefono(Utilidad.getParameter(request, "telefono", ""));
          registroPaciente.setCelular(Utilidad.getParameter(request, "celular", ""));
          registroPaciente.setEmail(Utilidad.getParameter(request, "email", ""));
          registroPaciente.setEstadoCivil(Utilidad.getParameter(request, "estadoCivil", ""));
@@ -50,10 +50,10 @@ public class RegistroPacienteServlet extends HttpServlet {
       private void doGetRequestIndex(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             RegistroPaciente registroPaciente = new RegistroPaciente();
-         
+       
             ArrayList<RegistroPaciente> registroPacientes = RegistroPacienteDAL.buscar(registroPaciente);
             request.setAttribute("registropaciente", registroPacientes);
-                 
+           request.setAttribute("top_aux", registroPaciente.getTop_aux());     
             request.getRequestDispatcher("Views/RegistroPaciente/index.jsp").forward(request, response);
         } catch (Exception ex) { Utilidad.enviarError(ex.getMessage(), request, response);}
     }
@@ -61,9 +61,9 @@ public class RegistroPacienteServlet extends HttpServlet {
        private void doPostRequestIndex(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             RegistroPaciente registroPaciente = obtenerRegistroPaciente(request);
-            ArrayList<RegistroPaciente> registropaciente = RegistroPacienteDAL.buscar(registroPaciente);
-            request.setAttribute("registropaciente", registropaciente);
-         
+            ArrayList<RegistroPaciente> registropacientes = RegistroPacienteDAL.buscar(registroPaciente);
+            request.setAttribute("registropacientes", registropacientes);
+               request.setAttribute("top_aux", registroPaciente.getTop_aux());       
             request.getRequestDispatcher("Views/RegistroPaciente/index.jsp").forward(request, response);
         } catch (Exception ex) { 
             Utilidad.enviarError(ex.getMessage(), request, response);

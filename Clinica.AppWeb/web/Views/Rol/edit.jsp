@@ -1,9 +1,3 @@
-<%-- 
-    Document   : edit
-    Created on : 22 ago. 2022, 08:32:00
-    Author     : KATHYA VISCARRA
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="clinica.entidadesdenegocio.Rol"%>
 <% Rol rol = (Rol) request.getAttribute("rol");%>
