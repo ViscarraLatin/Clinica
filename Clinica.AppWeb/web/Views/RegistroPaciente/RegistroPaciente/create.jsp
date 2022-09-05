@@ -1,8 +1,3 @@
-<%-- 
-    Document   : create
-    Created on : 22 ago. 2022, 08:33:03
-    Author     : KATHYA VISCARRA
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -10,12 +5,12 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <jsp:include page="/Views/Shared/title.jsp" />
-        <title>Crear Registro Paciente</title>
+        <title>Crear Registro Pacientefsdfasdf</title>
     </head>
     <body>
         <jsp:include page="/Views/Shared/headerBody.jsp" />  
         <main class="container">   
-            <h5>Crear Registro Paciente</h5>
+            <h5>Crear Registro Paciente safdsf</h5>
             <form action="RegistroPaciente" method="post">
                 <input type="hidden" name="accion" value="<%=request.getAttribute("accion")%>">                
                 <div class="row">
@@ -48,7 +43,7 @@
                         <input  id="txtOcupacion" type="text" name="ocupacion" required class="validate" maxlength="30">
                         <label for="txtOcupacion"></label>
                     </div>    
-                    
+         l p           
                        <div class="input-field col l4 s12">
                         <input  id="txtTelefono" type="text" name="Telefono" required class="validate" maxlength="30">
                         <label for="txtTelefono"></label>

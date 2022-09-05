@@ -15,7 +15,7 @@
     <body>
         <jsp:include page="/Views/Shared/headerBody.jsp" />  
         <main class="container">   
-            <h5>Crear Registro Paciente</h5>
+            <h5>Crear Registro Pacientesss</h5>
             <form action="RegistroPaciente" method="post" onsubmit="return  validarFormulario()">
                 <input type="hidden" name="accion" value="<%=request.getAttribute("accion")%>">                
                 <div class="row">

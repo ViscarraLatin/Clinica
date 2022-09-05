@@ -14,7 +14,7 @@ public class ExpedienteDAL { // Clase para poder realizar consulta de Insertar, 
  
     // Metodo para obtener los campos a utilizar en la consulta SELECT de la tabla de Usuario
     static String obtenerCampos() {
-        return "p.Id, p.IdRegistroPaciente, p.MotivoConsulta, p.Sintomas, p.SignosVitales, p.Descripcion, p.ExamenesComp, p.Diagnostico, p.Tratamiento";
+        return "u.Id, u.IdRegistroPaciente, u.MotivoConsulta, u.Sintomas, u.SignosVitales, u.Descripcion, u.ExamenesComp, u.Diagnostico, u.Tratamiento";
     }
     // Metodo para obtener el SELECT a la tabla Usuario y el top en el caso que se utilice una base de datos SQL SERVER
     private static String obtenerSelect(Expediente pExpediente) {
@@ -29,7 +29,7 @@ public class ExpedienteDAL { // Clase para poder realizar consulta de Insertar, 
     }   
     // Metodo para obtener Order by a la consulta SELECT de la tabla Usuario y ordene los registros de mayor a menor 
     private static String agregarOrderBy(Expediente pExpediente) {
-        String sql = " ORDER BY p.Id DESC";
+        String sql = " ORDER BY u.Id DESC";
         if (pExpediente.getTop_aux() > 0 && ComunDB.TIPODB == ComunDB.TipoDB.MYSQL) {
             // Agregar el LIMIT a la consulta SELECT de la tabla de Usuario en el caso que getTop_aux() sea mayor a cero y el gestor de base de datos
             // sea MYSQL
@@ -45,7 +45,7 @@ public class ExpedienteDAL { // Clase para poder realizar consulta de Insertar, 
         String sql;
         try (Connection conn = ComunDB.obtenerConexion();) { // Obtener la conexion desde la clase ComunDB y encerrarla en try para cierre automatico
                  //Definir la consulta INSERT a la tabla de Usuario utilizando el simbolo "?" para enviar parametros
-                sql = "INSERT INTO Expediente(IdRegistroPaciente,MotivoConsulta,Sintomas,SignosVitales,Descripcion,ExamenesComp,Diagnostico,Tratamiento,FechaRegistro) VALUES(?,?,?,?,?)";
+                sql = "INSERT INTO Expediente(IdRegistroPaciente,MotivoConsulta,Sintomas,SignosVitales,Descripcion,ExamenesComp,Diagnostico,Tratamiento,FechaRegistro) VALUES(?,?,?,?,?,?,?,?,?)";
                 try (PreparedStatement ps = ComunDB.createPreparedStatement(conn, sql);) { // Obtener el PreparedStatement desde la clase ComunDB
                     ps.setInt(1, pExpediente.getIdRegistroPaciente()); // Agregar el parametro a la consulta donde estan el simbolo "?" #1  
                     ps.setString(2, pExpediente.getMotivoConsulta()); // Agregar el parametro a la consulta donde estan el simbolo "?" #2 
@@ -77,7 +77,7 @@ public class ExpedienteDAL { // Clase para poder realizar consulta de Insertar, 
       
             try (Connection conn = ComunDB.obtenerConexion();) { // Obtener la conexion desde la clase ComunDB y encerrarla en try para cierre automatico
                 //Definir la consulta UPDATE a la tabla de Usuario utilizando el simbolo ? para enviar parametros
-                sql = "UPDATE Expediente SET IdRegistroPaciente=?, MotivoConsulta=?, Sintomas=?, SignosVitales=?, Descripcion=?, ExamenesComp=?, Diagnostico=?, Tratamiento=?, WHERE Id=?";
+                sql = "UPDATE Expediente SET IdRegistroPaciente=?, MotivoConsulta=?, Sintomas=?, SignosVitales=?, Descripcion=?, ExamenesComp=?, Diagnostico=?, Tratamiento=? WHERE Id=?";
                 try (PreparedStatement ps = ComunDB.createPreparedStatement(conn, sql);) { // obtener el PreparedStatement desde la clase ComunDB
                     ps.setInt(1, pExpediente.getIdRegistroPaciente()); // agregar el parametro a la consulta donde estan el simbolo ? #1  
                     ps.setString(2, pExpediente.getMotivoConsulta()); // agregar el parametro a la consulta donde estan el simbolo ? #2  
@@ -98,7 +98,7 @@ public class ExpedienteDAL { // Clase para poder realizar consulta de Insertar, 
             catch (SQLException ex) {
                 throw ex; // enviar al siguiente metodo el error al obtener la conexion en el caso que suceda 
             }
-        return 0;
+        return result;
     }
     
 
@@ -109,16 +109,7 @@ public class ExpedienteDAL { // Clase para poder realizar consulta de Insertar, 
         try (Connection conn = ComunDB.obtenerConexion();) { // Obtener la conexion desde la clase ComunDB y encerrarla en try para cierre automatico
             sql = "DELETE FROM Expediente WHERE Id=?"; //definir la consulta DELETE a la tabla de Usuario utilizando el simbolo ? para enviar parametros
             try (PreparedStatement ps = ComunDB.createPreparedStatement(conn, sql);) {  // obtener el PreparedStatement desde la clase ComunDB
-                ps.setInt(1, pExpediente.getId()); ps.setString
-                        (2, pExpediente.getMotivoConsulta()); // agregar el parametro a la consulta donde estan el simbolo ? #2  
-                    ps.setString(3, pExpediente.getSintomas()); // agregar el parametro a la consulta donde estan el simbolo ? #3   
-                    ps.setString(4, pExpediente.getSignosVitales());
-                    ps.setString(5, pExpediente.getDescripcion());
-                    ps.setString(6, pExpediente.getExamenesComp());
-                    ps.setString(7, pExpediente.getDiagnostico());
-                    ps.setString(8, pExpediente.getTratamiento());
-                    ps.setInt(9, pExpediente.getId());
-                // agregar el parametro a la consulta donde estan el simbolo ? #1 
+                ps.setInt(1, pExpediente.getId()); // agregar el parametro a la consulta donde estan el simbolo ? #1 
                 result = ps.executeUpdate(); // ejecutar la consulta DELETE en la base de datos
                 ps.close(); // cerrar el PreparedStatement
             } catch (SQLException ex) {
@@ -139,28 +130,20 @@ public class ExpedienteDAL { // Clase para poder realizar consulta de Insertar, 
         // u.Estatus(indice 6), u.FechaRegistro(indice 7) * FROM Usuario
         pIndex++;
         pExpediente.setId(pResultSet.getInt(pIndex)); // index 1
-        
         pIndex++;
         pExpediente.setIdRegistroPaciente(pResultSet.getInt(pIndex)); // index 2
-        
         pIndex++;
         pExpediente.setMotivoConsulta(pResultSet.getString(pIndex)); // index 3
-        
         pIndex++;
         pExpediente.setSintomas(pResultSet.getString(pIndex)); // index 4
-        
         pIndex++;
         pExpediente.setSignosVitales(pResultSet.getString(pIndex)); // index 5
-        
         pIndex++;
         pExpediente.setDescripcion(pResultSet.getString(pIndex)); // index 6
-        
         pIndex++;
         pExpediente.setExamenesComp(pResultSet.getString(pIndex)); // index 6
-        
         pIndex++;
         pExpediente.setDiagnostico(pResultSet.getString(pIndex)); // index 6
-        
         pIndex++;
         pExpediente.setTratamiento(pResultSet.getString(pIndex)); // index 6
         return pIndex;
@@ -215,7 +198,7 @@ public class ExpedienteDAL { // Clase para poder realizar consulta de Insertar, 
         try (Connection conn = ComunDB.obtenerConexion();) { // Obtener la conexion desde la clase ComunDB y encerrarla en try para cierre automatico
             String sql = obtenerSelect(pExpediente); // obtener la consulta SELECT de la tabla Usuario
              // Concatenar a la consulta SELECT de la tabla Usuario el WHERE  para comparar el campo Id
-            sql += " WHERE p.Id=?";
+            sql += " WHERE u.Id=?";
             try (PreparedStatement ps = ComunDB.createPreparedStatement(conn, sql);) { // obtener el PreparedStatement desde la clase ComunDB
                 ps.setInt(1, pExpediente.getId()); // agregar el parametro a la consulta donde estan el simbolo ? #1 
                 obtenerDatos(ps, expedientes); // Llenar el ArrayList de Usuario con las fila que devolvera la consulta SELECT a la tabla de Usuario
@@ -259,7 +242,7 @@ public class ExpedienteDAL { // Clase para poder realizar consulta de Insertar, 
     static void querySelect(Expediente pExpediente, ComunDB.UtilQuery pUtilQuery) throws SQLException {
         PreparedStatement statement = pUtilQuery.getStatement(); // obtener el PreparedStatement al cual aplicar los parametros
         if (pExpediente.getId() > 0) { // verificar si se va incluir el campo Id en el filtro de la consulta SELECT de la tabla de Usuario
-            pUtilQuery.AgregarWhereAnd(" p.Id=? "); // agregar el campo Id al filtro de la consulta SELECT y agregar el WHERE o AND
+            pUtilQuery.AgregarWhereAnd(" u.Id=? "); // agregar el campo Id al filtro de la consulta SELECT y agregar el WHERE o AND
             if (statement != null) {
                  // agregar el parametro del campo Id a la consulta SELECT de la tabla de Usuario
                 statement.setInt(pUtilQuery.getNumWhere(), pExpediente.getId());
@@ -275,7 +258,7 @@ public class ExpedienteDAL { // Clase para poder realizar consulta de Insertar, 
         }
         // verificar si se va incluir el campo Nombre en el filtro de la consulta SELECT de la tabla de Usuario
         if (pExpediente.getMotivoConsulta() != null && pExpediente.getMotivoConsulta().trim().isEmpty() == false) {
-            pUtilQuery.AgregarWhereAnd(" p.MotivoConsulta LIKE ? "); // agregar el campo Nombre al filtro de la consulta SELECT y agregar en el WHERE o AND
+            pUtilQuery.AgregarWhereAnd(" u.MotivoConsulta LIKE ? "); // agregar el campo Nombre al filtro de la consulta SELECT y agregar en el WHERE o AND
             if (statement != null) {
                  // agregar el parametro del campo Nombre a la consulta SELECT de la tabla de Usuario
                 statement.setString(pUtilQuery.getNumWhere(), "%" + pExpediente.getMotivoConsulta() + "%");
@@ -283,7 +266,7 @@ public class ExpedienteDAL { // Clase para poder realizar consulta de Insertar, 
         }
         // Verificar si se va incluir el campo Apellido en el filtro de la consulta SELECT de la tabla de Usuario
         if (pExpediente.getSintomas() != null && pExpediente.getSintomas().trim().isEmpty() == false) {
-            pUtilQuery.AgregarWhereAnd(" p.Sintomas LIKE ? "); // agregar el campo Apellido al filtro de la consulta SELECT y agregar en el WHERE o AND
+            pUtilQuery.AgregarWhereAnd(" u.Sintomas LIKE ? "); // agregar el campo Apellido al filtro de la consulta SELECT y agregar en el WHERE o AND
             if (statement != null) {
                  // agregar el parametro del campo Apellido a la consulta SELECT de la tabla de Usuario
                 statement.setString(pUtilQuery.getNumWhere(), "%" + pExpediente.getSintomas() + "%");
@@ -291,7 +274,7 @@ public class ExpedienteDAL { // Clase para poder realizar consulta de Insertar, 
         }
         // Verificar si se va incluir el campo Login en el filtro de la consulta SELECT de la tabla de Usuario
         if (pExpediente.getSignosVitales() != null && pExpediente.getSignosVitales().trim().isEmpty() == false) {
-            pUtilQuery.AgregarWhereAnd(" p.SignosVitales=? "); // agregar el campo Login al filtro de la consulta SELECT y agregar en el WHERE o AND
+            pUtilQuery.AgregarWhereAnd(" u.SignosVitales=? "); // agregar el campo Login al filtro de la consulta SELECT y agregar en el WHERE o AND
             if (statement != null) {
                  // agregar el parametro del campo Login a la consulta SELECT de la tabla de Usuario
                 statement.setString(pUtilQuery.getNumWhere(), pExpediente.getSignosVitales());
@@ -299,7 +282,7 @@ public class ExpedienteDAL { // Clase para poder realizar consulta de Insertar, 
         }
          // Verificar si se va incluir el campo Login en el filtro de la consulta SELECT de la tabla de Usuario
         if (pExpediente.getDescripcion() != null && pExpediente.getDescripcion().trim().isEmpty() == false) {
-            pUtilQuery.AgregarWhereAnd(" p.Descripcion=? "); // agregar el campo Login al filtro de la consulta SELECT y agregar en el WHERE o AND
+            pUtilQuery.AgregarWhereAnd(" u.Descripcion=? "); // agregar el campo Login al filtro de la consulta SELECT y agregar en el WHERE o AND
             if (statement != null) {
                  // agregar el parametro del campo Login a la consulta SELECT de la tabla de Usuario
                 statement.setString(pUtilQuery.getNumWhere(), pExpediente.getDescripcion());
@@ -307,21 +290,21 @@ public class ExpedienteDAL { // Clase para poder realizar consulta de Insertar, 
         }
          // Verificar si se va incluir el campo Login en el filtro de la consulta SELECT de la tabla de Usuario
         if (pExpediente.getExamenesComp() != null && pExpediente.getExamenesComp().trim().isEmpty() == false) {
-            pUtilQuery.AgregarWhereAnd(" p.ExamenesComp=?" ); // agregar el campo Login al filtro de la consulta SELECT y agregar en el WHERE o AND
+            pUtilQuery.AgregarWhereAnd(" u.ExamenesComp=?" ); // agregar el campo Login al filtro de la consulta SELECT y agregar en el WHERE o AND
             if (statement != null) {
                  // agregar el parametro del campo Login a la consulta SELECT de la tabla de Usuario
                 statement.setString(pUtilQuery.getNumWhere(), pExpediente.getExamenesComp());
             }
         }
         if (pExpediente.getDiagnostico() != null && pExpediente.getDiagnostico().trim().isEmpty() == false) {
-            pUtilQuery.AgregarWhereAnd(" p.Diagnostico=? "); // agregar el campo Login al filtro de la consulta SELECT y agregar en el WHERE o AND
+            pUtilQuery.AgregarWhereAnd(" u.Diagnostico=? "); // agregar el campo Login al filtro de la consulta SELECT y agregar en el WHERE o AND
             if (statement != null) {
                  // agregar el parametro del campo Login a la consulta SELECT de la tabla de Usuario
                 statement.setString(pUtilQuery.getNumWhere(), pExpediente.getDiagnostico());
             }
         }
         if (pExpediente.getTratamiento() != null && pExpediente.getTratamiento().trim().isEmpty() == false) {
-            pUtilQuery.AgregarWhereAnd(" p.Tratamiento=? "); // agregar el campo Login al filtro de la consulta SELECT y agregar en el WHERE o AND
+            pUtilQuery.AgregarWhereAnd(" u.Tratamiento=? "); // agregar el campo Login al filtro de la consulta SELECT y agregar en el WHERE o AND
             if (statement != null) {
                  // agregar el parametro del campo Login a la consulta SELECT de la tabla de Usuario
                 statement.setString(pUtilQuery.getNumWhere(), pExpediente.getTratamiento());
@@ -373,8 +356,8 @@ public class ExpedienteDAL { // Clase para poder realizar consulta de Insertar, 
             sql += obtenerCampos(); // Obtener los campos de la tabla de Usuario que iran en el SELECT
             sql += ",";
             sql += RegistroPacienteDAL.obtenerCampos(); // Obtener los campos de la tabla de Rol que iran en el SELECT
-            sql += " FROM Expediente p";
-            sql += " JOIN RegistroPaciente r on (p.IdRegistroPaciente=r.Id)"; // agregar el join para unir la tabla de Usuario con Rol
+            sql += " FROM Expediente u";
+            sql += " JOIN RegistroPaciente r on (u.IdRegistroPaciente=r.Id)"; // agregar el join para unir la tabla de Usuario con Rol
             ComunDB comundb = new ComunDB();
             ComunDB.UtilQuery utilQuery = comundb.new UtilQuery(sql, null, 0);
             querySelect(pExpediente, utilQuery); // Asignar el filtro a la consulta SELECT de la tabla de Usuario 

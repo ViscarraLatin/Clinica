@@ -12,7 +12,7 @@
     <head>        
         <jsp:include page="/Views/Shared/title.jsp" />
         <title>Home</title>
-
+        <link href="css/estilo.css" rel="stylesheet" type="textcss"/>
     </head>
     <body>
         <jsp:include page="/Views/Shared/headerBody.jsp" />  

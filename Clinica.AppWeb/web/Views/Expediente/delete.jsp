@@ -16,7 +16,7 @@
                 <input type="hidden" name="id" value="<%=expediente.getId()%>">  
                 <div class="row">
                     <div class="input-field col l4 s12">
-                        <input id="txtRegistroPaciente" type="text" value="<%=expediente.getRegistroPacientes().getNombre()%>" disabled>
+                        <input id="txtRegistroPaciente" type="text" value="<%=expediente.getRegistroPaciente().getNombre()%>" disabled>
                         <label for="txtRegistropaciente">Paciente</label>
                     </div> 
                     <div class="input-field col l4 s12">

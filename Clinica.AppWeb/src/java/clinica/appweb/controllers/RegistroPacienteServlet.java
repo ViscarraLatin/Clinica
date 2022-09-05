@@ -38,33 +38,61 @@ public class RegistroPacienteServlet extends HttpServlet {
          registroPaciente.setEstatura(Utilidad.getParameter(request, "estatura", ""));
         
         
-        if (accion.equals("index")) {
+        if (accion.equals("index\n" +
+"        return registroPaciente;\n" +
+"    }\n" +
+"\n" +
+"     \n" +
+"     ")) {
             registroPaciente.setTop_aux(Integer.parseInt(Utilidad.getParameter(request, "top_aux", "10")));
             registroPaciente.setTop_aux(registroPaciente.getTop_aux() == 0 ? Integer.MAX_VALUE : registroPaciente.getTop_aux());
         }
-        return registroPaciente;
-    }
-
      
+            return registroPaciente;
+     }
      
       private void doGetRequestIndex(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             RegistroPaciente registroPaciente = new RegistroPaciente();
-       
-            ArrayList<RegistroPaciente> registroPacientes = RegistroPacienteDAL.buscar(registroPaciente);
+            System.out.println("index  -->");
+            //ArrayList<RegistroPaciente> registroPacientes = RegistroPacienteDAL.buscar(registroPaciente);
+            ArrayList<RegistroPaciente> registroPacientes = RegistroPacienteDAL.obtenerTodos();
             request.setAttribute("registropaciente", registroPacientes);
-           request.setAttribute("top_aux", registroPaciente.getTop_aux());     
+           //request.setAttribute("top_aux", registroPaciente.getTop_aux());     
             request.getRequestDispatcher("Views/RegistroPaciente/index.jsp").forward(request, response);
         } catch (Exception ex) { Utilidad.enviarError(ex.getMessage(), request, response);}
     }
       
+      //en buscar entra en esta funcion
        private void doPostRequestIndex(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
+            String b=request.getParameter("buscar");
+            System.out.println("buscar trae: "+b);   
+            
+            ArrayList<RegistroPaciente> registroPacientes=RegistroPacienteDAL.filtro(b);
+            //System.out.println(lista.get(0).getNombre());
+
+            request.setAttribute("registropaciente", registroPacientes);
+           //request.setAttribute("top_aux", registroPaciente.getTop_aux());     
+            request.getRequestDispatcher("Views/RegistroPaciente/index.jsp").forward(request, response);
+            
+            
+            
+            
+            //request.setAttribute("lista",lista);
+            //request.getRequestDispatcher("Views/RegistroPaciente/RegistroPaciente/buscar.jsp").forward(request, response);
+            
+            
+            
+            
+            /*
+            request.getRequestDispatcher("Views/RegistroPaciente/RegistroPaciente/buscar.jsp").forward(request, response);
+            System.out.println("enra aquci!  fdsfsdfsfsfsgf");
             RegistroPaciente registroPaciente = obtenerRegistroPaciente(request);
             ArrayList<RegistroPaciente> registropacientes = RegistroPacienteDAL.buscar(registroPaciente);
             request.setAttribute("registropacientes", registropacientes);
                request.setAttribute("top_aux", registroPaciente.getTop_aux());       
-            request.getRequestDispatcher("Views/RegistroPaciente/index.jsp").forward(request, response);
+            request.getRequestDispatcher("Views/RegistroPaciente/index.jsp").forward(request, response);*/
         } catch (Exception ex) { 
             Utilidad.enviarError(ex.getMessage(), request, response);
         }
@@ -74,10 +102,11 @@ public class RegistroPacienteServlet extends HttpServlet {
     }
         private void doPostRequestCreate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
-            RegistroPaciente registroPaciente = obtenerRegistroPaciente(request);
+            RegistroPaciente  registroPaciente = obtenerRegistroPaciente(request);
             int result = RegistroPacienteDAL.crear(registroPaciente);
             if (result != 0) {
                 request.setAttribute("accion", "index");
+                System.out.println("enra aquci!  assd");
                 doGetRequestIndex(request, response);
             } else {
                 Utilidad.enviarError("No se logro registrar un nuevo registro", request, response);
@@ -88,16 +117,20 @@ public class RegistroPacienteServlet extends HttpServlet {
     }
          
         
-        
-         private void requestObtenerPorId(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    //Edit al presionar dentro de la lista..
+    private void requestObtenerPorId(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("id del paciente: "+request.getParameter("id"));
         try {
-            RegistroPaciente registroPaciente = obtenerRegistroPaciente(request);
-            RegistroPaciente registroPaciente_result = RegistroPacienteDAL.obtenerPorId(registroPaciente);
-            if (registroPaciente_result.getId() > 0) {
+            //RegistroPaciente registroPaciente = obtenerRegistroPaciente(request);
+            RegistroPaciente registroPaciente = RegistroPacienteDAL.obtenerPorId2(Integer.parseInt(request.getParameter("id")));
+            request.setAttribute("registropaciente", registroPaciente);
+           //request.setAttribute("top_aux", registroPaciente.getTop_aux());     
+            //request.getRequestDispatcher("Views/RegistroPaciente/edit.jsp").forward(request, response);
+            /*if (registroPaciente_result.getId() > 0) {
                 request.setAttribute("registroPaciente", registroPaciente_result);
             } else {
                 Utilidad.enviarError("El Id:" + registroPaciente.getId() + " no existe en la tabla de RegistroPaciente", request, response);
-            }
+            }*/
         } catch (Exception ex) {
             Utilidad.enviarError(ex.getMessage(), request, response);
         }
@@ -107,8 +140,11 @@ public class RegistroPacienteServlet extends HttpServlet {
         request.getRequestDispatcher("Views/RegistroPaciente/edit.jsp").forward(request, response);
     }
     
+    
+    //aqui debe entrar en Edit
     private void doPostRequestEdit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
+            System.out.println("edit");
             RegistroPaciente registroPaciente = obtenerRegistroPaciente(request);
             int result = RegistroPacienteDAL.modificar(registroPaciente);
             if (result != 0) {
@@ -123,17 +159,37 @@ public class RegistroPacienteServlet extends HttpServlet {
         }
     }
      private void doGetRequestDetails(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        requestObtenerPorId(request, response);
-        request.getRequestDispatcher("Views/RegistroPaciente/details.jsp").forward(request, response);
+         System.out.println("detalle");
+         request.setAttribute("exists", true);
+        requestObtenerPorId(request, response);        
+        request.getRequestDispatcher("Views/RegistroPaciente/edit.jsp").forward(request, response);
+            
+       
     }
     
     private void doGetRequestDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        requestObtenerPorId(request, response);
-        request.getRequestDispatcher("Views/RegistroPaciente/delete.jsp").forward(request, response);
+        System.out.println("entra en delete get");
+        
+         try {
+            //RegistroPaciente registroPaciente = obtenerRegistroPaciente(request);
+            int id=Integer.parseInt(request.getParameter("id"));
+            int result = RegistroPacienteDAL.eliminar(id);
+            if (result != 0) {
+                System.out.println("!=0");
+                request.setAttribute("accion", "index");
+                doGetRequestIndex(request, response);
+                
+            } else {
+                System.out.println("0");
+                Utilidad.enviarError("No se logro eliminar el registro", request, response);
+            }
+        } catch (Exception ex) {
+            Utilidad.enviarError(ex.getMessage(), request, response);
+        }        
     }
     
     private void doPostRequestDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        try {
+        /*try {
             RegistroPaciente registroPaciente = obtenerRegistroPaciente(request);
             int result = RegistroPacienteDAL.eliminar(registroPaciente);
             if (result != 0) {
@@ -144,7 +200,7 @@ public class RegistroPacienteServlet extends HttpServlet {
             }
         } catch (Exception ex) {
             Utilidad.enviarError(ex.getMessage(), request, response);
-        }
+        }*/
     }
     
     
@@ -154,6 +210,7 @@ public class RegistroPacienteServlet extends HttpServlet {
             throws ServletException, IOException {
            SessionUser.authorize(request, response, () -> {
             String accion = Utilidad.getParameter(request, "accion", "index");
+            System.out.println("entra en get");
             switch (accion) {
                 case "index":
                     request.setAttribute("accion", accion);
@@ -186,6 +243,7 @@ public class RegistroPacienteServlet extends HttpServlet {
             throws ServletException, IOException {
         SessionUser.authorize(request, response, () -> {
             String accion = Utilidad.getParameter(request, "accion", "index");
+            System.out.println("entra en post");
             switch (accion) {
                 case "index":
                     request.setAttribute("accion", accion);
@@ -211,3 +269,4 @@ public class RegistroPacienteServlet extends HttpServlet {
     }
     //</editor-fold>
 }
+        

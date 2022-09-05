@@ -28,7 +28,7 @@
     
  <jsp:include page="/Views/Shared/headerBody.jsp" />  
            
-            <h5>Buscar Paciente</h5>
+            <h5>Buscar Paciente sdfsdfs</h5>
             <form action="RegistroPaciente" method="post">
                 <input type="hidden" name="accion" value="<%=request.getAttribute("accion")%>"> 
                 <div class="row">
@@ -89,7 +89,7 @@
                                <td><%=registroPaciente.getNombre()%></td>  
                              <td><%=registroPaciente.getApellido()%></td>  
                                <td><%=registroPaciente.getDui()%></td>  
-                             td><%=registroPaciente.getGenero()%></td>  
+                             <td><%=registroPaciente.getGenero()%></td>  
                              <td><%=registroPaciente.getFechaNac()%></td>  
                             <td><%=registroPaciente.getLugarNac()%></td>  
                             <td><%=registroPaciente.getOcupacion()%></td>  

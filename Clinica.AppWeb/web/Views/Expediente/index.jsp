@@ -31,16 +31,12 @@
             <h5>Buscar Expedientes</h5>
             <form action="Expediente" method="post">
                 <input type="hidden" name="accion" value="<%=request.getAttribute("accion")%>"> 
-                 <div class="row">
-                    <div class="input-field col l4 s12">   
-                         <input  id="txtRegistroPaciente" type="text" name="registroPaciente">
-                        <label for="txtRegistroPaciente">RegistroPaciente</label>                      
-                    </div>
+                
                 <div class="row">
                     <div class="input-field col l4 s12">   
                          <input  id="txtMotivoConsulta" type="text" name="motivoConsulta">
                         <label for="txtMotivoConsulta">MotivoConsulta</label>                      
-                    </div> 
+                    </div>
                    <div class="row">
                     <div class="input-field col l4 s12">   
                          <input  id="txtSintomas" type="text" name="sintomas">

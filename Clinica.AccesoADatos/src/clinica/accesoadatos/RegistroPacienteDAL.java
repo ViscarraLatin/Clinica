@@ -105,14 +105,15 @@ public class RegistroPacienteDAL {
     }
 
     
-    public static int eliminar(RegistroPaciente pRegistroPaciente) throws Exception {
+    public static int eliminar(int id) throws Exception {
         int result;
         String sql;
         try (Connection conn = ComunDB.obtenerConexion();) { 
-            sql = "DELETE FROM RegistroPaciente WHERE Id=?"; 
+            sql = "DELETE FROM RegistroPaciente WHERE Id="+id; 
             try (PreparedStatement ps = ComunDB.createPreparedStatement(conn, sql);) {  
-                ps.setInt(1, pRegistroPaciente.getId());
-                  ps.setString(1, pRegistroPaciente.getNombre());
+                //ps.setInt(0, pRegistroPaciente.getId());
+                //ps.setInt(1, pRegistroPaciente.getId());
+               /*   ps.setString(1, pRegistroPaciente.getNombre());
                 ps.setString(2, pRegistroPaciente.getApellido()); 
                 ps.setString(3, pRegistroPaciente.getDui()); 
                 ps.setString(4, pRegistroPaciente.getGenero()); 
@@ -127,7 +128,7 @@ public class RegistroPacienteDAL {
                 ps.setString(13, pRegistroPaciente.getDireccion()); 
                 ps.setInt(14, pRegistroPaciente.getPeso()); 
                 ps.setString(15, pRegistroPaciente.getEstatura()); 
-            
+            */
                 result = ps.executeUpdate();  
                 ps.close(); 
             } catch (SQLException ex) {
@@ -252,8 +253,54 @@ public class RegistroPacienteDAL {
         }
         return registroPaciente; 
     }
+    
+    public static RegistroPaciente obtenerPorId2(int id) throws Exception {
+        RegistroPaciente registroPaciente = new RegistroPaciente();
+        ArrayList<RegistroPaciente> registroPacientes = new ArrayList();
+        try (Connection conn = ComunDB.obtenerConexion();) { 
+            String sql = "select * from  registropaciente where id="+id;             
+            try (PreparedStatement ps = ComunDB.createPreparedStatement(conn, sql);) { 
+                //ps.setInt(1, pRegistroPaciente.getId()); 
+                obtenerDatos(ps, registroPacientes);
 
+                ps.close(); 
+            } catch (SQLException ex) {
+                throw ex;  
+            }
+            conn.close(); 
+        }
+        catch (SQLException ex) {
+            throw ex; 
+        }
+        if (registroPacientes.size() > 0) { 
+            registroPaciente = registroPacientes.get(0); 
+        }
+        return registroPaciente; 
+    }
 
+        
+        
+//duda filtro???? <rol>
+    public static ArrayList<RegistroPaciente> filtro(String nombre) throws Exception {
+        ArrayList<RegistroPaciente> registroPacientes;
+        registroPacientes = new ArrayList<>();
+        try (Connection conn = ComunDB.obtenerConexion();) {
+            String sql = "select * from registropaciente where nombre like('%"+nombre+"%') or apellido like('%"+nombre+"%')"; 
+            //sql += agregarOrderBy(new RegistroPaciente()); 
+            try (PreparedStatement ps = ComunDB.createPreparedStatement(conn, sql);) { 
+                obtenerDatos(ps, registroPacientes); 
+                ps.close();
+            } catch (SQLException ex) {
+                throw ex; 
+            }
+            conn.close(); 
+        } 
+        catch (SQLException ex) {
+            throw ex; 
+        }
+        return registroPacientes; 
+    }
+    
     public static ArrayList<RegistroPaciente> obtenerTodos() throws Exception {
         ArrayList<RegistroPaciente> registroPacientes;
         registroPacientes = new ArrayList<>();
@@ -398,8 +445,36 @@ public class RegistroPacienteDAL {
         }
              
     }
-               
-    public static ArrayList<RegistroPaciente> buscar(RegistroPaciente pRegistroPaciente) throws Exception {
+    
+     public static ArrayList<RegistroPaciente> buscar(RegistroPaciente pRegistroPaciente) throws Exception {
+        ArrayList<RegistroPaciente> registroPacientes = new ArrayList();
+        try (Connection conn = ComunDB.obtenerConexion();) { 
+            String sql = obtenerSelect(pRegistroPaciente); 
+            ComunDB comundb = new ComunDB();
+            ComunDB.UtilQuery utilQuery = comundb.new UtilQuery(sql, null, 0); 
+            querySelect(pRegistroPaciente, utilQuery);
+            sql = utilQuery.getSQL(); 
+            sql += agregarOrderBy(pRegistroPaciente); 
+            try (PreparedStatement ps = ComunDB.createPreparedStatement(conn, sql);) { 
+                utilQuery.setStatement(ps);
+                utilQuery.setSQL(null);
+                utilQuery.setNumWhere(0); 
+                querySelect(pRegistroPaciente, utilQuery);  
+                obtenerDatos(ps, registroPacientes); 
+                ps.close(); 
+            } catch (SQLException ex) {
+                throw ex; 
+            }
+            conn.close(); 
+        }
+        catch (SQLException ex) {
+            throw ex; 
+        }
+        return registroPacientes; 
+    }
+               //duda????
+     
+    public static ArrayList<RegistroPaciente> buscar_nombre(RegistroPaciente pRegistroPaciente) throws Exception {
         ArrayList<RegistroPaciente> registroPacientes = new ArrayList();
         try (Connection conn = ComunDB.obtenerConexion();) { 
             String sql = obtenerSelect(pRegistroPaciente); 

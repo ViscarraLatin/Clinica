@@ -18,7 +18,7 @@
         <jsp:include page="/Views/Shared/headerBody.jsp" />  
         <main class="container">   
             <h5>Editar paciente</h5>
-            <form action="Rol" method="post">
+            <form action="RegistroPaciente" method="post">
                 <input type="hidden" name="accion" value="<%=request.getAttribute("accion")%>">   
                 <input type="hidden" name="id" value="<%=registroPaciente.getId()%>">   
                 <div class="row">

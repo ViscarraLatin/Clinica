@@ -1,8 +1,4 @@
-<%-- 
-    Document   : delete
-    Created on : 22 ago. 2022, 08:33:13
-    Author     : KATHYA VISCARRA
---%>
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="clinica.entidadesdenegocio.RegistroPaciente"%>
